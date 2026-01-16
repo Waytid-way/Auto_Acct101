@@ -3,6 +3,7 @@ import { randomUUID } from 'crypto';
 import healthRouter from '@modules/health/routes';
 import accountingRouter from '@modules/accounting/routes';
 import flowAccountRouter from '@modules/flowaccount/routes';
+
 import teableRouter from '@modules/teable/routes';
 import filesRouter from '@modules/files/routes';
 import exportRouter from '@modules/export/routes';

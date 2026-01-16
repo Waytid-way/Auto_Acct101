@@ -1,0 +1,30 @@
+{
+    "5000": {
+        "expressCode": "5000",
+        "expressName": "ค่าใช้จ่ายทั่วไป"
+    },
+    "5110": {
+        "expressCode": "5110",
+        "expressName": "ค่าไฟฟ้า"
+    },
+    "5120": {
+        "expressCode": "5120",
+        "expressName": "ค่าประปา"
+    },
+    "5200": {
+        "expressCode": "5200",
+        "expressName": "ค่าเช่าสถานที่"
+    },
+    "5300": {
+        "expressCode": "5300",
+        "expressName": "ค่าอาหารและความบันเทิง"
+    },
+    "4000": {
+        "expressCode": "4000",
+        "expressName": "รายได้"
+    },
+    "4100": {
+        "expressCode": "4100",
+        "expressName": "รายได้จากการขาย"
+    }
+}

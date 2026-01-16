@@ -29,6 +29,14 @@ const envSchema = z.object({
     ENCRYPTION_KEY: z.string().min(32, 'Encryption key must be at least 32 chars').optional(),
     ENCRYPTION_ALGORITHM: z.string().default('aes-256-gcm'),
     ENCRYPTION_IV_LENGTH: z.string().transform(Number).default('16'),
+
+    // FlowAccount
+    FLOWACCOUNT_CLIENT_ID: z.string().min(1, 'FlowAccount Client ID required'),
+    FLOWACCOUNT_CLIENT_SECRET: z.string().min(1, 'FlowAccount Client Secret required'),
+    FLOWACCOUNT_REDIRECT_URI: z.string().url('Invalid FlowAccount redirect URI'),
+
+    // Export
+    EXPRESS_CHART_OF_ACCOUNTS_PATH: z.string().default('./config/chart-of-accounts.json'),
 });
 
 export type Env = z.infer<typeof envSchema>;
