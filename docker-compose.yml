@@ -1,4 +1,7 @@
+version: '3.8'
+
 services:
+  # MongoDB (Auto-Acct Backend)
   mongodb:
     image: mongo:7-jammy
     container_name: auto_acct_mongo
@@ -10,7 +13,6 @@ services:
       - ./docker/mongodb/init-replica.sh:/docker-entrypoint-initdb.d/init-replica.sh
     environment:
       - MONGO_REPLICA_SET_NAME=rs0
-
     healthcheck:
       test: [ "CMD", "mongosh", "--eval", "db.adminCommand('ping')" ]
       interval: 10s
@@ -19,21 +21,57 @@ services:
     networks:
       - auto-acct-network
 
+  # PostgreSQL (Teable)
+  teable-db:
+    image: postgres:15-alpine
+    container_name: teable-postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: teable
+      POSTGRES_PASSWORD: teable_password
+      POSTGRES_DB: teable
+    volumes:
+      - teable_db:/var/lib/postgresql/data
+    networks:
+      - auto-acct-network
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U teable" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Teable App
   teable:
     image: ghcr.io/teableio/teable:latest
     container_name: auto_acct_teable
+    restart: always
+    # entrypoint: ["/bin/sh", "-c", "tail -f /dev/null"] # Override entrypoint to keep it running
+    # command: [ "tail", "-f", "/dev/null" ]
     ports:
       - "3000:3000"
     depends_on:
-      mongodb:
+      teable-db:
         condition: service_healthy
     environment:
-      - DATABASE_URL=mongodb://mongodb:27017/teable?replicaSet=rs0
-      - SECRET_KEY=${TEABLE_SECRET_KEY:-supersecretkeyfortesting}
-    volumes:
-      - teable_data:/app/.teable
+      # Connection to Postgres
+      DATABASE_URL: "postgresql://teable:teable_password@teable-db:5432/teable"
+      PRISMA_DATABASE_URL: "postgresql://teable:teable_password@teable-db:5432/teable"
+      NODE_ENV: production
+      PUBLIC_ORIGIN: http://localhost:3000
+      # Secrets from .env
+      SECRET_KEY: ${TEABLE_SECRET_KEY}
+      SESSION_SECRET: ${TEABLE_SESSION_SECRET}
     networks:
       - auto-acct-network
+    volumes:
+      - teable_data:/app/.teable
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:3000/health" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
 
 networks:
   auto-acct-network:
@@ -41,4 +79,5 @@ networks:
 
 volumes:
   mongo_data:
+  teable_db:
   teable_data:

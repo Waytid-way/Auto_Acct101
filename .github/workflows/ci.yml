@@ -1,0 +1,49 @@
+name: Bun CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    services:
+      mongodb:
+        image: mongo:7.0
+        options: >-
+          --health-cmd "mongosh --eval 'db.runCommand({ ping: 1 })'"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 27017:27017
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+      
+      - name: Install Dependencies
+        working-directory: ./backend
+        run: bun install
+      
+      - name: Type Check
+        working-directory: ./backend
+        run: bun run typecheck
+      
+      - name: Run Tests
+        working-directory: ./backend
+        run: bun test
+        env:
+          MONGO_URI: mongodb://localhost:27017/auto-acct-test
+          NODE_ENV: test
+      
+      - name: Build Check
+        working-directory: ./backend
+        run: bun build ./src/index.ts --target=bun

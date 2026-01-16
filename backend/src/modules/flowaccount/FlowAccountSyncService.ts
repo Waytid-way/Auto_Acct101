@@ -210,7 +210,12 @@ export class FlowAccountSyncService {
         // Teable creation failure -> safe to rollback DB.
 
         // We need tableId. Ideally config.
-        const pendingTableId = 'PENDING_REVIEW_TABLE_ID'; // Placeholder, should be in config/env
+        const pendingTableId = config.TEABLE_TABLE_ID;
+
+        if (!pendingTableId) {
+            logger.warn('TEABLE_TABLE_ID not set, skipping Teable push');
+            return;
+        }
 
         try {
             await this.teableClient.createRecord(pendingTableId, {
