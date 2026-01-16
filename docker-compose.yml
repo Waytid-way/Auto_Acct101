@@ -1,0 +1,44 @@
+services:
+  mongodb:
+    image: mongo:7-jammy
+    container_name: auto_acct_mongo
+    ports:
+      - "27017:27017"
+    command: [ "--replSet", "rs0", "--bind_ip_all", "--port", "27017" ]
+    volumes:
+      - mongo_data:/data/db
+      - ./docker/mongodb/init-replica.sh:/docker-entrypoint-initdb.d/init-replica.sh
+    environment:
+      - MONGO_REPLICA_SET_NAME=rs0
+
+    healthcheck:
+      test: [ "CMD", "mongosh", "--eval", "db.adminCommand('ping')" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - auto-acct-network
+
+  teable:
+    image: ghcr.io/teableio/teable:latest
+    container_name: auto_acct_teable
+    ports:
+      - "3000:3000"
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    environment:
+      - DATABASE_URL=mongodb://mongodb:27017/teable?replicaSet=rs0
+      - SECRET_KEY=${TEABLE_SECRET_KEY:-supersecretkeyfortesting}
+    volumes:
+      - teable_data:/app/.teable
+    networks:
+      - auto-acct-network
+
+networks:
+  auto-acct-network:
+    driver: bridge
+
+volumes:
+  mongo_data:
+  teable_data:

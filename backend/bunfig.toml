@@ -1,0 +1,11 @@
+[install]
+# Equivalent to package-lock for Bun
+lockfile = true
+
+[install.scopes]
+# Private registry if needed
+# "@myorg" = { url = "https://registry.myorg.com" }
+
+[test]
+# Test configuration
+preload = ["./tests/setup.ts"]
