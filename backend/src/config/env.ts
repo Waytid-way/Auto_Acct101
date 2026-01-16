@@ -13,30 +13,46 @@ const envSchema = z.object({
 
     MONGODB_URI: z.string().min(1, 'MONGODB_URI is required'),
 
+    // Discord Webhooks (3-tier alerts for Phase 3)
+    DISCORD_WEBHOOK_CRITICAL: z.string().url('Invalid Discord critical webhook URL').optional(),
+    DISCORD_WEBHOOK_INFO: z.string().url('Invalid Discord info webhook URL').optional(),
+    DISCORD_WEBHOOK_ML: z.string().url('Invalid Discord ML webhook URL').optional(),
+    // Legacy webhook (backward compatibility)
     DISCORD_WEBHOOK_URL: z.string().url('Invalid Discord webhook URL').optional(),
 
+    // Teable Integration
     TEABLE_API_URL: z.string().url().optional(),
     TEABLE_API_TOKEN: z.string().min(1).optional(),
     TEABLE_WEBHOOK_SECRET: z.string().min(1).optional(),
+    TEABLE_TABLE_ID: z.string().min(1).optional(),
 
+    // FlowAccount OAuth
     FLOWACCOUNT_CLIENT_ID: z.string().optional(),
     FLOWACCOUNT_CLIENT_SECRET: z.string().optional(),
     FLOWACCOUNT_REDIRECT_URI: z.string().url().optional(),
 
+    // Google Drive (Service Account)
     GOOGLE_SERVICE_ACCOUNT_JSON: z.string().min(1).optional(),
     GOOGLE_DRIVE_ROOT_FOLDER_ID: z.string().min(1).optional(),
 
+    // Encryption
     ENCRYPTION_KEY: z.string().min(32, 'Encryption key must be at least 32 chars').optional(),
     ENCRYPTION_ALGORITHM: z.string().default('aes-256-gcm'),
     ENCRYPTION_IV_LENGTH: z.string().transform(Number).default('16'),
 
-    // FlowAccount
-    FLOWACCOUNT_CLIENT_ID: z.string().min(1, 'FlowAccount Client ID required'),
-    FLOWACCOUNT_CLIENT_SECRET: z.string().min(1, 'FlowAccount Client Secret required'),
-    FLOWACCOUNT_REDIRECT_URI: z.string().url('Invalid FlowAccount redirect URI'),
-
     // Export
     EXPRESS_CHART_OF_ACCOUNTS_PATH: z.string().default('./config/chart-of-accounts.json'),
+
+    // Phase 3: Google Gemini API (for ML fallback)
+    GOOGLE_API_KEY: z.string().optional(),
+
+    // Phase 3: Groq API (alternative AI provider)
+    GROQ_API_KEY: z.string().optional(),
+
+    // Phase 3: ML Configuration
+    ML_CONFIDENCE_THRESHOLD: z.string().transform(Number).default('0.80'),
+    ML_MODEL_PATH: z.string().default('./ml/models/category_classifier.pkl'),
+    PYTHON_VENV_PATH: z.string().default('./ml/ml-env/bin/python3'),
 });
 
 export type Env = z.infer<typeof envSchema>;
