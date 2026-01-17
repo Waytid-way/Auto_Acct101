@@ -7,3 +7,5 @@ coverage/
 .bun/
 mongo_data/
 teable_data/
+temp_csv/
+temp_folder/
