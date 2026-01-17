@@ -39,6 +39,9 @@
             ],
             "@loaders/*": [
                 "loaders/*"
+            ],
+            "@models/*": [
+                "models/*"
             ]
         }
     },

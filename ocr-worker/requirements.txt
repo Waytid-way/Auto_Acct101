@@ -1,0 +1,19 @@
+# PaddleOCR Python Dependencies
+# Phase 3B: OCR Integration
+
+# OCR Engine
+paddlepaddle==2.6.0
+paddleocr==2.7.0
+
+# Web Framework
+fastapi==0.109.0
+uvicorn==0.27.0
+python-multipart==0.0.9
+
+# Image Processing
+pillow==10.2.0
+opencv-python-headless==4.9.0.80
+numpy==1.26.4
+
+# Utilities
+pydantic==2.6.0
