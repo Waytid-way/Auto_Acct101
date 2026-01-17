@@ -8,6 +8,8 @@ import { parseMoneyFromString, MoneyInt } from '@types/money';
 import logger from '@loaders/logger';
 import { sendDiscordAlert } from '@loaders/logger';
 import { TeableClient } from '@modules/teable/TeableClient';
+import config from '@config/env';
+import { groqService } from '@modules/ai/GroqClassificationService';
 
 export class FlowAccountSyncService {
     private client = new FlowAccountClient();
@@ -157,8 +159,55 @@ export class FlowAccountSyncService {
             );
         }
 
-        // Validation 3: Category mapping
-        const category = this.mapCategory(doc.documentType, doc.contactName);
+        // Validation 3: Category mapping & AI Classification
+        // Hybrid Approach: Rules > AI > Fallback
+
+        let category: { name: string; accountCode: string };
+        let confidenceScore = 0.0;
+        let aiReasoning = '';
+
+        // 1. Try Strict Rules (Keywords)
+        const ruleBased = this.mapCategory(doc.documentType, doc.contactName);
+
+        // Identify if the rule result is just a generic fallback (5000/4000)
+        // If it's a specific match (e.g. 5110 Electricity), trust it 100%
+        const isGeneric = ruleBased?.accountCode === '5000' || ruleBased?.accountCode === '4000' || ruleBased?.accountCode === '4100';
+
+        if (ruleBased && !isGeneric) {
+            category = ruleBased;
+            confidenceScore = 1.0;
+            aiReasoning = 'Rule-based keyword match';
+        } else {
+            // 2. Use Groq AI
+            try {
+                const aiResult = await groqService.classifyEntry({
+                    vendor: doc.contactName,
+                    amount: amount, // Passing satang, but service handles logic?
+                    // Actually GroqService expects number. We should check implementation.
+                    // GroqService does (amount/100).toFixed(2). So we pass satang (MoneyInt). Correct.
+                    description: doc.remarks || doc.documentType,
+                    date: new Date(doc.documentDate),
+                });
+
+                // Parse "5100 - Category Name"
+                const parts = aiResult.category.split(' - ');
+                category = {
+                    accountCode: parts[0],
+                    name: parts.slice(1).join(' - ') || parts[0]
+                };
+                confidenceScore = aiResult.confidence;
+                aiReasoning = aiResult.reasoning;
+
+                logger.info(`AI Classified ${doc.recordId}: ${category.accountCode} (${confidenceScore})`);
+
+            } catch (error) {
+                // 3. Fallback to generic rule or Miscellaneous
+                logger.warn(`AI classification failed for ${doc.recordId}, using fallback`, { error });
+                category = ruleBased || { name: 'Miscellaneous', accountCode: '5900' };
+                confidenceScore = 0.5;
+                aiReasoning = 'AI Failed - Fallback';
+            }
+        }
 
         if (!category) {
             throw new Error(`Unable to map category for document ${doc.recordId}`);
@@ -228,7 +277,8 @@ export class FlowAccountSyncService {
                     category: category.name,
                     status: 'pending_review', // Default status
                     vatAmount: vatAmount / 100,
-                    confidenceScore: 0.85, // TODO: Implement ML confidence
+                    vatAmount: vatAmount / 100,
+                    confidenceScore,
                     warnings: warnings.length > 0 ? warnings : undefined,
                     attachmentUrl: entryDTO.attachmentId,
                 },
