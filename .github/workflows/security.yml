@@ -14,4 +14,4 @@ jobs:
       - uses: oven-sh/setup-bun@v1
       - name: Audit Dependencies
         working-directory: ./backend
-        run: bun pm audit
+        run: npm audit
