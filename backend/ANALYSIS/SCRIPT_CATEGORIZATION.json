@@ -1,0 +1,767 @@
+[
+  {
+    "path": "backend\\src\\scripts\\analyze-script-quality.ts",
+    "filename": "analyze-script-quality.ts",
+    "category": "VERIFICATION",
+    "subcategory": "Unknown",
+    "purpose_description": "Purpose unknown - requires manual review",
+    "key_functions": [],
+    "dependencies_external": [
+      "fs",
+      "path"
+    ],
+    "dependencies_internal": [],
+    "has_error_handling": true,
+    "lines_of_code": 150
+  },
+  {
+    "path": "backend\\src\\scripts\\generate-final-report.ts",
+    "filename": "generate-final-report.ts",
+    "category": "VERIFICATION",
+    "subcategory": "Unknown",
+    "purpose_description": "Purpose unknown - requires manual review",
+    "key_functions": [],
+    "dependencies_external": [
+      "fs",
+      "path"
+    ],
+    "dependencies_internal": [],
+    "has_error_handling": false,
+    "lines_of_code": 85
+  },
+  {
+    "path": "backend\\src\\scripts\\restructure-project.ts",
+    "filename": "restructure-project.ts",
+    "category": "VERIFICATION",
+    "subcategory": "Unknown",
+    "purpose_description": "Purpose unknown - requires manual review",
+    "key_functions": [],
+    "dependencies_external": [
+      "fs",
+      "path"
+    ],
+    "dependencies_internal": [],
+    "has_error_handling": true,
+    "lines_of_code": 112
+  },
+  {
+    "path": "backend\\src\\scripts\\testing\\manual-full-loop-test.ts",
+    "filename": "manual-full-loop-test.ts",
+    "category": "TESTING",
+    "subcategory": "Integration Tests",
+    "purpose_description": "Manual trigger script for verifying full loop",
+    "key_functions": [],
+    "dependencies_external": [
+      "mongoose"
+    ],
+    "dependencies_internal": [
+      "../../modules/teable/TeableClient",
+      "../../jobs/TeablePollingJob",
+      "../../jobs/DailyExportJob",
+      "../../modules/files/GoogleDriveService",
+      "../../modules/accounting/models/JournalEntry.model",
+      "../../modules/export/models/ExportQueue",
+      "../../config/env"
+    ],
+    "has_error_handling": true,
+    "lines_of_code": 84
+  },
+  {
+    "path": "backend\\src\\scripts\\testing\\run-full-simulation.ts",
+    "filename": "run-full-simulation.ts",
+    "category": "TESTING",
+    "subcategory": "Integration Tests",
+    "purpose_description": "Orchestrates a full end-to-end system simulation",
+    "key_functions": [],
+    "dependencies_external": [
+      "child_process",
+      "path"
+    ],
+    "dependencies_internal": [],
+    "has_error_handling": true,
+    "lines_of_code": 49
+  },
+  {
+    "path": "backend\\src\\scripts\\testing\\seed-simulation.ts",
+    "filename": "seed-simulation.ts",
+    "category": "TESTING",
+    "subcategory": "Data Generation",
+    "purpose_description": "Seeds database with test data for simulation",
+    "key_functions": [],
+    "dependencies_external": [
+      "mongoose",
+      "fs",
+      "path"
+    ],
+    "dependencies_internal": [
+      "../../config/env",
+      "../../modules/accounting/models/JournalEntry.model",
+      "../../modules/export/models/ExportQueue",
+      "../../modules/export/models/ExportLog"
+    ],
+    "has_error_handling": true,
+    "lines_of_code": 99
+  },
+  {
+    "path": "backend\\src\\scripts\\testing\\simple-gemini-test.ts",
+    "filename": "simple-gemini-test.ts",
+    "category": "TESTING",
+    "subcategory": "AI/ML Tests",
+    "purpose_description": "Simple connectivity test for Gemini API",
+    "key_functions": [],
+    "dependencies_external": [
+      "@google/generative-ai"
+    ],
+    "dependencies_internal": [
+      "../../config/env.js"
+    ],
+    "has_error_handling": true,
+    "lines_of_code": 66
+  },
+  {
+    "path": "backend\\src\\scripts\\testing\\simulate-bulk-data.ts",
+    "filename": "simulate-bulk-data.ts",
+    "category": "TESTING",
+    "subcategory": "Data Generation",
+    "purpose_description": "Generates bulk transaction data for load testing",
+    "key_functions": [],
+    "dependencies_external": [
+      "mongoose"
+    ],
+    "dependencies_internal": [
+      "../../modules/accounting/models/JournalEntry.model",
+      "../../modules/teable/TeableClient",
+      "../../config/env",
+      "../../loaders/mongoose"
+    ],
+    "has_error_handling": true,
+    "lines_of_code": 101
+  },
+  {
+    "path": "backend\\src\\scripts\\testing\\simulate-realworld-flow.ts",
+    "filename": "simulate-realworld-flow.ts",
+    "category": "TESTING",
+    "subcategory": "Integration Tests",
+    "purpose_description": "Simulates a user flow from upload to approval",
+    "key_functions": [],
+    "dependencies_external": [],
+    "dependencies_internal": [
+      "../../modules/teable/TeableClient",
+      "../../config/env"
+    ],
+    "has_error_handling": true,
+    "lines_of_code": 72
+  },
+  {
+    "path": "backend\\src\\scripts\\testing\\simulate-realworld-with-ai.ts",
+    "filename": "simulate-realworld-with-ai.ts",
+    "category": "TESTING",
+    "subcategory": "Integration Tests",
+    "purpose_description": "Simulates flow including AI classification step",
+    "key_functions": [],
+    "dependencies_external": [
+      "mongoose"
+    ],
+    "dependencies_internal": [
+      "../../modules/accounting/models/JournalEntry.model",
+      "../../modules/teable/TeableClient",
+      "../../modules/ai/GroqClassificationService",
+      "../../config/env",
+      "../../loaders/mongoose"
+    ],
+    "has_error_handling": true,
+    "lines_of_code": 119
+  },
+  {
+    "path": "backend\\src\\scripts\\testing\\simulate-webhook.ts",
+    "filename": "simulate-webhook.ts",
+    "category": "TESTING",
+    "subcategory": "Integration Tests",
+    "purpose_description": "Simulates incoming webhook payloads from Teable",
+    "key_functions": [],
+    "dependencies_external": [
+      "axios"
+    ],
+    "dependencies_internal": [
+      "../../config/env"
+    ],
+    "has_error_handling": true,
+    "lines_of_code": 47
+  },
+  {
+    "path": "backend\\src\\scripts\\testing\\stress-test-discord.ts",
+    "filename": "stress-test-discord.ts",
+    "category": "TESTING",
+    "subcategory": "Integration Tests",
+    "purpose_description": "Stress tests Discord notification system",
+    "key_functions": [],
+    "dependencies_external": [],
+    "dependencies_internal": [
+      "../../loaders/logger"
+    ],
+    "has_error_handling": true,
+    "lines_of_code": 74
+  },
+  {
+    "path": "backend\\src\\scripts\\testing\\test-discord-webhooks.ts",
+    "filename": "test-discord-webhooks.ts",
+    "category": "TESTING",
+    "subcategory": "Integration Tests",
+    "purpose_description": "Validates Discord webhook alerts for accounting events",
+    "key_functions": [],
+    "dependencies_external": [],
+    "dependencies_internal": [
+      "../../loaders/mongoose.js",
+      "../../config/env.js"
+    ],
+    "has_error_handling": true,
+    "lines_of_code": 91
+  },
+  {
+    "path": "backend\\src\\scripts\\testing\\test-gemini-classification.ts",
+    "filename": "test-gemini-classification.ts",
+    "category": "TESTING",
+    "subcategory": "AI/ML Tests",
+    "purpose_description": "Tests Gemini AI classification model",
+    "key_functions": [],
+    "dependencies_external": [],
+    "dependencies_internal": [
+      "../../modules/gemini/GeminiClassificationService.js",
+      "../../loaders/logger.js",
+      "../../loaders/logger.js"
+    ],
+    "has_error_handling": true,
+    "lines_of_code": 79
+  },
+  {
+    "path": "backend\\src\\scripts\\testing\\test-groq-classification.ts",
+    "filename": "test-groq-classification.ts",
+    "category": "TESTING",
+    "subcategory": "AI/ML Tests",
+    "purpose_description": "Tests Groq AI (Llama 3.3) classification",
+    "key_functions": [],
+    "dependencies_external": [],
+    "dependencies_internal": [
+      "../../modules/ai/GroqClassificationService.js",
+      "../../loaders/logger.js",
+      "../../loaders/logger.js"
+    ],
+    "has_error_handling": true,
+    "lines_of_code": 75
+  },
+  {
+    "path": "backend\\src\\scripts\\testing\\test-groq-connection.ts",
+    "filename": "test-groq-connection.ts",
+    "category": "TESTING",
+    "subcategory": "Connectivity Tests",
+    "purpose_description": "Tests connectivity to Groq API",
+    "key_functions": [],
+    "dependencies_external": [
+      "@config/env",
+      "@modules/ai/GroqClassificationService",
+      "@loaders/logger"
+    ],
+    "dependencies_internal": [],
+    "has_error_handling": true,
+    "lines_of_code": 42
+  },
+  {
+    "path": "backend\\src\\scripts\\testing\\test-hybrid-logic.ts",
+    "filename": "test-hybrid-logic.ts",
+    "category": "TESTING",
+    "subcategory": "Integration Tests",
+    "purpose_description": "Tests hybrid OCR logic (PaddleOCR + Google Vision)",
+    "key_functions": [],
+    "dependencies_external": [
+      "@modules/flowaccount/FlowAccountSyncService",
+      "@modules/ai/GroqClassificationService"
+    ],
+    "dependencies_internal": [],
+    "has_error_handling": true,
+    "lines_of_code": 90
+  },
+  {
+    "path": "backend\\src\\scripts\\testing\\test-rest-api.ts",
+    "filename": "test-rest-api.ts",
+    "category": "TESTING",
+    "subcategory": "API Tests",
+    "purpose_description": "Validates REST API endpoints and health checks",
+    "key_functions": [],
+    "dependencies_external": [
+      "axios"
+    ],
+    "dependencies_internal": [
+      "../../config/env.js"
+    ],
+    "has_error_handling": true,
+    "lines_of_code": 50
+  },
+  {
+    "path": "backend\\src\\scripts\\testing\\test-teable-update.ts",
+    "filename": "test-teable-update.ts",
+    "category": "TESTING",
+    "subcategory": "API Tests",
+    "purpose_description": "Tests Teable record update functionality",
+    "key_functions": [],
+    "dependencies_external": [],
+    "dependencies_internal": [
+      "../../modules/teable/TeableClient",
+      "../../config/env"
+    ],
+    "has_error_handling": true,
+    "lines_of_code": 60
+  },
+  {
+    "path": "backend\\src\\scripts\\testing\\test-teable.ts",
+    "filename": "test-teable.ts",
+    "category": "TESTING",
+    "subcategory": "API Tests",
+    "purpose_description": "Tests Teable API integration and webhook handling",
+    "key_functions": [],
+    "dependencies_external": [
+      "axios"
+    ],
+    "dependencies_internal": [
+      "../../config/env"
+    ],
+    "has_error_handling": true,
+    "lines_of_code": 43
+  },
+  {
+    "path": "backend\\src\\scripts\\testing\\verify-phase3-ready.ts",
+    "filename": "verify-phase3-ready.ts",
+    "category": "VERIFICATION",
+    "subcategory": "Phase Readiness",
+    "purpose_description": "Verifies Phase 3 readiness before deployment",
+    "key_functions": [],
+    "dependencies_external": [],
+    "dependencies_internal": [
+      "../../loaders/mongoose.js",
+      "../../modules/accounting/AccountingModel.js",
+      "../../loaders/logger.js"
+    ],
+    "has_error_handling": true,
+    "lines_of_code": 167
+  },
+  {
+    "path": "backend\\src\\scripts\\maintenance\\analyze-state.ts",
+    "filename": "analyze-state.ts",
+    "category": "MAINTENANCE",
+    "subcategory": "Health Checks",
+    "purpose_description": "Analyzes current system state (Journal Entries & Export Queue)",
+    "key_functions": [],
+    "dependencies_external": [],
+    "dependencies_internal": [
+      "../../loaders/mongoose",
+      "../../modules/accounting/models/JournalEntry.model",
+      "../../modules/export/models/ExportQueue"
+    ],
+    "has_error_handling": true,
+    "lines_of_code": 68
+  },
+  {
+    "path": "backend\\src\\scripts\\maintenance\\check-approved-entries.ts",
+    "filename": "check-approved-entries.ts",
+    "category": "MAINTENANCE",
+    "subcategory": "Health Checks",
+    "purpose_description": "Verifies approved ledger entries",
+    "key_functions": [],
+    "dependencies_external": [
+      "mongoose"
+    ],
+    "dependencies_internal": [
+      "../../config/env.js"
+    ],
+    "has_error_handling": true,
+    "lines_of_code": 45
+  },
+  {
+    "path": "backend\\src\\scripts\\maintenance\\check-queue.ts",
+    "filename": "check-queue.ts",
+    "category": "MAINTENANCE",
+    "subcategory": "Health Checks",
+    "purpose_description": "Inspects items currently in the export queue",
+    "key_functions": [],
+    "dependencies_external": [
+      "mongoose"
+    ],
+    "dependencies_internal": [
+      "../../config/env",
+      "../../modules/export/models/ExportQueue"
+    ],
+    "has_error_handling": false,
+    "lines_of_code": 36
+  },
+  {
+    "path": "backend\\src\\scripts\\maintenance\\clear-queue.ts",
+    "filename": "clear-queue.ts",
+    "category": "MAINTENANCE",
+    "subcategory": "Health Checks",
+    "purpose_description": "Clears all items from the export queue",
+    "key_functions": [],
+    "dependencies_external": [],
+    "dependencies_internal": [
+      "../../modules/export/models/ExportQueue",
+      "../../loaders/mongoose"
+    ],
+    "has_error_handling": false,
+    "lines_of_code": 15
+  },
+  {
+    "path": "backend\\src\\scripts\\maintenance\\clear-teable.ts",
+    "filename": "clear-teable.ts",
+    "category": "MAINTENANCE",
+    "subcategory": "Health Checks",
+    "purpose_description": "Deletes all records from Teable (Cleanup)",
+    "key_functions": [],
+    "dependencies_external": [
+      "axios"
+    ],
+    "dependencies_internal": [
+      "../../config/env"
+    ],
+    "has_error_handling": true,
+    "lines_of_code": 53
+  },
+  {
+    "path": "backend\\src\\scripts\\maintenance\\debug-status.ts",
+    "filename": "debug-status.ts",
+    "category": "MAINTENANCE",
+    "subcategory": "Health Checks",
+    "purpose_description": "Detailed debugging of record status and linking",
+    "key_functions": [],
+    "dependencies_external": [],
+    "dependencies_internal": [
+      "../../loaders/mongoose",
+      "../../modules/export/models/ExportQueue",
+      "../../modules/accounting/models/JournalEntry.model",
+      "../../modules/teable/TeableClient",
+      "../../config/env"
+    ],
+    "has_error_handling": true,
+    "lines_of_code": 71
+  },
+  {
+    "path": "backend\\src\\scripts\\maintenance\\debug-teable.ts",
+    "filename": "debug-teable.ts",
+    "category": "MAINTENANCE",
+    "subcategory": "Health Checks",
+    "purpose_description": "Debug script for raw Teable API interactions",
+    "key_functions": [],
+    "dependencies_external": [
+      "axios"
+    ],
+    "dependencies_internal": [
+      "../../config/env"
+    ],
+    "has_error_handling": true,
+    "lines_of_code": 25
+  },
+  {
+    "path": "backend\\src\\scripts\\maintenance\\force-poll.ts",
+    "filename": "force-poll.ts",
+    "category": "MAINTENANCE",
+    "subcategory": "Scheduled Tasks",
+    "purpose_description": "Manually triggers the Teable Polling Job",
+    "key_functions": [],
+    "dependencies_external": [],
+    "dependencies_internal": [
+      "../../loaders/mongoose",
+      "../../jobs/TeablePollingJob",
+      "../../loaders/logger"
+    ],
+    "has_error_handling": true,
+    "lines_of_code": 23
+  },
+  {
+    "path": "backend\\src\\scripts\\maintenance\\sync-flowaccount-cron.ts",
+    "filename": "sync-flowaccount-cron.ts",
+    "category": "MAINTENANCE",
+    "subcategory": "Scheduled Tasks",
+    "purpose_description": "Scheduled sync job with FlowAccount API",
+    "key_functions": [],
+    "dependencies_external": [
+      "@loaders/mongoose",
+      "@modules/flowaccount/FlowAccountSyncService",
+      "@loaders/logger"
+    ],
+    "dependencies_internal": [],
+    "has_error_handling": true,
+    "lines_of_code": 42
+  },
+  {
+    "path": "backend\\src\\scripts\\maintenance\\trigger-export.ts",
+    "filename": "trigger-export.ts",
+    "category": "MAINTENANCE",
+    "subcategory": "Scheduled Tasks",
+    "purpose_description": "Manually triggers the Daily Export Job",
+    "key_functions": [],
+    "dependencies_external": [
+      "mongoose"
+    ],
+    "dependencies_internal": [
+      "../../jobs/DailyExportJob",
+      "../../modules/files/GoogleDriveService",
+      "../../modules/export/models/ExportQueue",
+      "../../config/env"
+    ],
+    "has_error_handling": true,
+    "lines_of_code": 46
+  },
+  {
+    "path": "backend\\src\\scripts\\maintenance\\wipe-data.ts",
+    "filename": "wipe-data.ts",
+    "category": "MAINTENANCE",
+    "subcategory": "Health Checks",
+    "purpose_description": "Wipes local MongoDB data for clean slate testing",
+    "key_functions": [],
+    "dependencies_external": [],
+    "dependencies_internal": [
+      "../../loaders/mongoose",
+      "../../modules/accounting/models/JournalEntry.model",
+      "../../modules/export/models/ExportQueue",
+      "../../modules/export/models/ExportLog"
+    ],
+    "has_error_handling": true,
+    "lines_of_code": 31
+  },
+  {
+    "path": "backend\\src\\scripts\\setup\\deploy-commands.ts",
+    "filename": "deploy-commands.ts",
+    "category": "CONFIGURATION",
+    "subcategory": "Setup Scripts",
+    "purpose_description": "Deploys Discord slash commands to the server",
+    "key_functions": [],
+    "dependencies_external": [
+      "discord.js"
+    ],
+    "dependencies_internal": [
+      "../../config/env",
+      "../../loaders/logger"
+    ],
+    "has_error_handling": true,
+    "lines_of_code": 38
+  },
+  {
+    "path": "backend\\src\\scripts\\setup\\generate-accounting-request-doc.ts",
+    "filename": "generate-accounting-request-doc.ts",
+    "category": "CONFIGURATION",
+    "subcategory": "Data Generation",
+    "purpose_description": "Generates accounting team request forms",
+    "key_functions": [],
+    "dependencies_external": [
+      "docx",
+      "fs"
+    ],
+    "dependencies_internal": [],
+    "has_error_handling": false,
+    "lines_of_code": 582
+  },
+  {
+    "path": "backend\\src\\scripts\\setup\\register-discord-commands.ts",
+    "filename": "register-discord-commands.ts",
+    "category": "CONFIGURATION",
+    "subcategory": "Setup Scripts",
+    "purpose_description": "Registers Discord slash commands (alternative)",
+    "key_functions": [],
+    "dependencies_external": [
+      "discord.js",
+      "fs",
+      "path"
+    ],
+    "dependencies_internal": [
+      "../../config/env"
+    ],
+    "has_error_handling": true,
+    "lines_of_code": 95
+  },
+  {
+    "path": "backend\\src\\scripts\\setup\\register-teable-webhook.ts",
+    "filename": "register-teable-webhook.ts",
+    "category": "CONFIGURATION",
+    "subcategory": "Setup Scripts",
+    "purpose_description": "Registers webhook URL with Teable",
+    "key_functions": [],
+    "dependencies_external": [
+      "axios"
+    ],
+    "dependencies_internal": [
+      "../../config/env"
+    ],
+    "has_error_handling": true,
+    "lines_of_code": 51
+  },
+  {
+    "path": "backend\\src\\scripts\\setup\\setup-google-oauth.ts",
+    "filename": "setup-google-oauth.ts",
+    "category": "CONFIGURATION",
+    "subcategory": "Setup Scripts",
+    "purpose_description": "Interactive setup for Google Drive OAuth2",
+    "key_functions": [],
+    "dependencies_external": [
+      "googleapis",
+      "google-auth-library",
+      "readline"
+    ],
+    "dependencies_internal": [],
+    "has_error_handling": true,
+    "lines_of_code": 73
+  },
+  {
+    "path": "backend\\src\\scripts\\setup\\setup-teable-schema.ts",
+    "filename": "setup-teable-schema.ts",
+    "category": "CONFIGURATION",
+    "subcategory": "Setup Scripts",
+    "purpose_description": "Full schema initialization for Teable tables",
+    "key_functions": [],
+    "dependencies_external": [
+      "axios"
+    ],
+    "dependencies_internal": [
+      "../../config/env"
+    ],
+    "has_error_handling": true,
+    "lines_of_code": 76
+  },
+  {
+    "path": "backend\\src\\scripts\\setup\\setup-teable.ts",
+    "filename": "setup-teable.ts",
+    "category": "CONFIGURATION",
+    "subcategory": "Setup Scripts",
+    "purpose_description": "Initializes Teable database schema and configuration",
+    "key_functions": [],
+    "dependencies_external": [
+      "axios"
+    ],
+    "dependencies_internal": [
+      "../../config/env",
+      "../../loaders/logger"
+    ],
+    "has_error_handling": true,
+    "lines_of_code": 53
+  },
+  {
+    "path": "backend\\src\\scripts\\setup\\update-teable-options.ts",
+    "filename": "update-teable-options.ts",
+    "category": "CONFIGURATION",
+    "subcategory": "Setup Scripts",
+    "purpose_description": "Updates Select field options in Teable",
+    "key_functions": [],
+    "dependencies_external": [
+      "axios"
+    ],
+    "dependencies_internal": [
+      "../../config/env"
+    ],
+    "has_error_handling": true,
+    "lines_of_code": 58
+  },
+  {
+    "path": "backend\\src\\scripts\\tools\\analyze-scripts.ts",
+    "filename": "analyze-scripts.ts",
+    "category": "MAINTENANCE",
+    "subcategory": "Health Checks",
+    "purpose_description": "Extracts metadata from script files",
+    "key_functions": [],
+    "dependencies_external": [
+      "fs",
+      "path"
+    ],
+    "dependencies_internal": [],
+    "has_error_handling": true,
+    "lines_of_code": 175
+  },
+  {
+    "path": "backend\\src\\scripts\\tools\\categorize-scripts.ts",
+    "filename": "categorize-scripts.ts",
+    "category": "MAINTENANCE",
+    "subcategory": "Health Checks",
+    "purpose_description": "Categorizes scripts based on metadata and rules",
+    "key_functions": [],
+    "dependencies_external": [
+      "fs",
+      "path"
+    ],
+    "dependencies_internal": [],
+    "has_error_handling": true,
+    "lines_of_code": 264
+  },
+  {
+    "path": "backend\\src\\scripts\\tools\\generate-docs.ts",
+    "filename": "generate-docs.ts",
+    "category": "MAINTENANCE",
+    "subcategory": "Health Checks",
+    "purpose_description": "Generates markdown documentation for scripts",
+    "key_functions": [],
+    "dependencies_external": [
+      "fs",
+      "path"
+    ],
+    "dependencies_internal": [],
+    "has_error_handling": true,
+    "lines_of_code": 195
+  },
+  {
+    "path": "backend\\src\\scripts\\tools\\list-folders.ts",
+    "filename": "list-folders.ts",
+    "category": "MAINTENANCE",
+    "subcategory": "Health Checks",
+    "purpose_description": "Inventories script folders for code scanning",
+    "key_functions": [],
+    "dependencies_external": [
+      "fs",
+      "path"
+    ],
+    "dependencies_internal": [],
+    "has_error_handling": true,
+    "lines_of_code": 82
+  },
+  {
+    "path": "backend\\src\\scripts\\tools\\list-gemini-models.ts",
+    "filename": "list-gemini-models.ts",
+    "category": "MAINTENANCE",
+    "subcategory": "Queries",
+    "purpose_description": "Lists available Gemini AI models",
+    "key_functions": [],
+    "dependencies_external": [
+      "@google/generative-ai"
+    ],
+    "dependencies_internal": [
+      "../../config/env.js"
+    ],
+    "has_error_handling": true,
+    "lines_of_code": 51
+  },
+  {
+    "path": "backend\\src\\scripts\\legacy\\add-drcr-columns.ts",
+    "filename": "add-drcr-columns.ts",
+    "category": "CONFIGURATION",
+    "subcategory": "Setup Scripts",
+    "purpose_description": "Migration: Adds DR/CR columns to Teable schema",
+    "key_functions": [],
+    "dependencies_external": [
+      "axios"
+    ],
+    "dependencies_internal": [
+      "../../config/env"
+    ],
+    "has_error_handling": true,
+    "lines_of_code": 27
+  },
+  {
+    "path": "backend\\src\\scripts\\legacy\\add-export-path-column.ts",
+    "filename": "add-export-path-column.ts",
+    "category": "CONFIGURATION",
+    "subcategory": "Setup Scripts",
+    "purpose_description": "Migration: Adds Export Path column to Teable",
+    "key_functions": [],
+    "dependencies_external": [
+      "axios"
+    ],
+    "dependencies_internal": [
+      "../../config/env"
+    ],
+    "has_error_handling": true,
+    "lines_of_code": 35
+  }
+]
