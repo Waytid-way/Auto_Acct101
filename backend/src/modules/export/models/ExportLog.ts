@@ -13,7 +13,7 @@ interface IExportLogModel extends Model<IExportLog> {
 
 const ExportLogSchema = new Schema<IExportLog, IExportLogModel>(
     {
-        queueId: { type: Schema.Types.ObjectId, ref: 'ExportQueue', required: true },
+        queueId: { type: Schema.Types.ObjectId, ref: 'ExportQueue', required: false, default: null },
         action: {
             type: String,
             enum: Object.values(ExportAction),
@@ -30,6 +30,17 @@ const ExportLogSchema = new Schema<IExportLog, IExportLogModel>(
 
 // Indexes for audit trail queries
 ExportLogSchema.index({ queueId: 1, createdAt: -1 });
+
+// Unique index for daily batch idempotency (atomic race-condition prevention)
+// sparse: true allows null values (only enforces uniqueness when both fields exist)
+ExportLogSchema.index(
+    { 'metadata.batchDate': 1, action: 1 },
+    {
+        unique: true,
+        sparse: true,
+        name: 'idx_batch_daily_unique'
+    }
+);
 
 // Immutability enforcement (Golden Rule #4)
 ExportLogSchema.pre('save', function (next) {

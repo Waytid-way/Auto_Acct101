@@ -29,7 +29,7 @@ export class TeableWebhookController {
         try {
             // 1. Validate payload with Zod
             const payload = TeableWebhookSchema.parse(req.body);
-            const { recordId, tableId, fields } = payload.data;
+            const { recordId, fields } = payload.data;
             const { status, exportPath, entryId } = fields;
 
             // 2. Log incoming webhook
@@ -128,7 +128,7 @@ export class TeableWebhookController {
                 await sendCriticalAlert(`Webhook validation failed: ${error.message}`);
                 return res.status(400).json({
                     error: 'Invalid payload',
-                    details: error.errors,
+                    details: error.format(),
                 });
             }
 

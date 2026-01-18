@@ -2,6 +2,7 @@ import config from '@config/env';
 import logger from '@loaders/logger';
 import { connectMongoDB, disconnectMongoDB } from '@loaders/mongoose';
 import { createExpressApp } from '@loaders/express';
+import { initializeJobs, shutdownJobs } from '@loaders/jobs';
 
 async function startServer() {
     try {
@@ -15,11 +16,17 @@ async function startServer() {
         const server = app.listen(config.PORT, () => {
             logger.info(`🚀 Server running on port ${config.PORT} in ${config.NODE_ENV} mode`);
             logger.info(`Health check: http://localhost:${config.PORT}/api/health`);
+
+            // 4. Initialize scheduled jobs
+            initializeJobs();
         });
 
         // Graceful Shutdown
         const shutdown = async () => {
             logger.info('SIGTERM/SIGINT received. Shutting down...');
+
+            // Stop scheduled jobs first
+            shutdownJobs();
 
             server.close(() => {
                 logger.info('HTTP server closed');

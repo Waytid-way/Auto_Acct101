@@ -23,9 +23,9 @@ export class GoogleDriveService {
      * @param fileName Name of the file (e.g. "export_2024-01-01.csv")
      * @param buffer File content
      * @param mimeType MIME type (default text/csv)
-     * @returns Web View Link
+     * @returns Object containing fileId and webViewLink
      */
-    async uploadFile(fileName: string, buffer: Buffer, mimeType: string = 'text/csv'): Promise<string> {
+    async uploadFile(fileName: string, buffer: Buffer, mimeType: string = 'text/csv'): Promise<{ fileId: string; webViewLink: string }> {
         try {
             const fileMetadata = {
                 name: fileName,
@@ -60,7 +60,7 @@ export class GoogleDriveService {
             });
 
             logger.info('File uploaded to Google Drive', { fileName, fileId });
-            return webViewLink;
+            return { fileId, webViewLink };
 
         } catch (error) {
             logger.error('Failed to upload file to Google Drive', { error, fileName });
