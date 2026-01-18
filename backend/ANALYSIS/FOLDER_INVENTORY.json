@@ -1,0 +1,119 @@
+[
+  {
+    "path": "scripts",
+    "absolutePath": "C:\\Users\\com\\Documents\\Auto_Acct101\\scripts",
+    "file_count": 0,
+    "files": [],
+    "ts_files": 0,
+    "js_files": 0
+  },
+  {
+    "path": "backend/scripts",
+    "absolutePath": "C:\\Users\\com\\Documents\\Auto_Acct101\\backend\\scripts",
+    "file_count": 0,
+    "files": [],
+    "ts_files": 0,
+    "js_files": 0
+  },
+  {
+    "path": "backend/src/scripts",
+    "absolutePath": "C:\\Users\\com\\Documents\\Auto_Acct101\\backend\\src\\scripts",
+    "file_count": 3,
+    "files": [
+      "analyze-script-quality.ts",
+      "generate-final-report.ts",
+      "restructure-project.ts"
+    ],
+    "ts_files": 3,
+    "js_files": 0
+  },
+  {
+    "path": "backend/src/scripts/testing",
+    "absolutePath": "C:\\Users\\com\\Documents\\Auto_Acct101\\backend\\src\\scripts\\testing",
+    "file_count": 18,
+    "files": [
+      "manual-full-loop-test.ts",
+      "run-full-simulation.ts",
+      "seed-simulation.ts",
+      "simple-gemini-test.ts",
+      "simulate-bulk-data.ts",
+      "simulate-realworld-flow.ts",
+      "simulate-realworld-with-ai.ts",
+      "simulate-webhook.ts",
+      "stress-test-discord.ts",
+      "test-discord-webhooks.ts",
+      "test-gemini-classification.ts",
+      "test-groq-classification.ts",
+      "test-groq-connection.ts",
+      "test-hybrid-logic.ts",
+      "test-rest-api.ts",
+      "test-teable-update.ts",
+      "test-teable.ts",
+      "verify-phase3-ready.ts"
+    ],
+    "ts_files": 18,
+    "js_files": 0
+  },
+  {
+    "path": "backend/src/scripts/maintenance",
+    "absolutePath": "C:\\Users\\com\\Documents\\Auto_Acct101\\backend\\src\\scripts\\maintenance",
+    "file_count": 11,
+    "files": [
+      "analyze-state.ts",
+      "check-approved-entries.ts",
+      "check-queue.ts",
+      "clear-queue.ts",
+      "clear-teable.ts",
+      "debug-status.ts",
+      "debug-teable.ts",
+      "force-poll.ts",
+      "sync-flowaccount-cron.ts",
+      "trigger-export.ts",
+      "wipe-data.ts"
+    ],
+    "ts_files": 11,
+    "js_files": 0
+  },
+  {
+    "path": "backend/src/scripts/setup",
+    "absolutePath": "C:\\Users\\com\\Documents\\Auto_Acct101\\backend\\src\\scripts\\setup",
+    "file_count": 8,
+    "files": [
+      "deploy-commands.ts",
+      "generate-accounting-request-doc.ts",
+      "register-discord-commands.ts",
+      "register-teable-webhook.ts",
+      "setup-google-oauth.ts",
+      "setup-teable-schema.ts",
+      "setup-teable.ts",
+      "update-teable-options.ts"
+    ],
+    "ts_files": 8,
+    "js_files": 0
+  },
+  {
+    "path": "backend/src/scripts/tools",
+    "absolutePath": "C:\\Users\\com\\Documents\\Auto_Acct101\\backend\\src\\scripts\\tools",
+    "file_count": 5,
+    "files": [
+      "analyze-scripts.ts",
+      "categorize-scripts.ts",
+      "generate-docs.ts",
+      "list-folders.ts",
+      "list-gemini-models.ts"
+    ],
+    "ts_files": 5,
+    "js_files": 0
+  },
+  {
+    "path": "backend/src/scripts/legacy",
+    "absolutePath": "C:\\Users\\com\\Documents\\Auto_Acct101\\backend\\src\\scripts\\legacy",
+    "file_count": 2,
+    "files": [
+      "add-drcr-columns.ts",
+      "add-export-path-column.ts"
+    ],
+    "ts_files": 2,
+    "js_files": 0
+  }
+]

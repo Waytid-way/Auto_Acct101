@@ -1,0 +1,20 @@
+{
+    "extends": "../tsconfig.json",
+    "compilerOptions": {
+        "rootDir": "..",
+        "types": [
+            "@types/bun",
+            "@types/jest"
+        ],
+        "noUnusedLocals": false,
+        "noUnusedParameters": false
+    },
+    "include": [
+        "../src/**/*",
+        "./**/*"
+    ],
+    "exclude": [
+        "../node_modules",
+        "../dist"
+    ]
+}

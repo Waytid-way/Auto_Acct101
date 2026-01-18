@@ -8,7 +8,7 @@ dotenv.config(); // fallback to local .env
 
 const envSchema = z.object({
     NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),
-    PORT: z.string().transform(Number).default('4000'),
+    PORT: z.coerce.number().default(4000),
     LOG_LEVEL: z.enum(['error', 'warn', 'info', 'debug']).default('info'),
 
     MONGODB_URI: z.string().min(1, 'MONGODB_URI is required'),
@@ -38,7 +38,7 @@ const envSchema = z.object({
     // Encryption
     ENCRYPTION_KEY: z.string().min(32, 'Encryption key must be at least 32 chars').optional(),
     ENCRYPTION_ALGORITHM: z.string().default('aes-256-gcm'),
-    ENCRYPTION_IV_LENGTH: z.string().transform(Number).default('16'),
+    ENCRYPTION_IV_LENGTH: z.coerce.number().default(16),
 
     // Export
     EXPRESS_CHART_OF_ACCOUNTS_PATH: z.string().default('./config/chart-of-accounts.json'),
@@ -50,9 +50,14 @@ const envSchema = z.object({
     GROQ_API_KEY: z.string().optional(),
 
     // Phase 3: ML Configuration
-    ML_CONFIDENCE_THRESHOLD: z.string().transform(Number).default('0.80'),
+    ML_CONFIDENCE_THRESHOLD: z.coerce.number().default(0.80),
     ML_MODEL_PATH: z.string().default('./ml/models/category_classifier.pkl'),
     PYTHON_VENV_PATH: z.string().default('./ml/ml-env/bin/python3'),
+
+    // Phase 7: Interactive Discord Bot
+    DISCORD_BOT_TOKEN: z.string().optional(),
+    DISCORD_CLIENT_ID: z.string().optional(),
+    DISCORD_ADMIN_ROLE_ID: z.string().optional(),
 });
 
 export type Env = z.infer<typeof envSchema>;

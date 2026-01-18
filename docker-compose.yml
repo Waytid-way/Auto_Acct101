@@ -73,6 +73,36 @@ services:
       timeout: 10s
       retries: 3
 
+  # PaddleOCR Worker (Phase 3B)
+  # Critical Modification #3: Auto-restart policy + resource management
+  ocr-worker:
+    build:
+      context: ./ocr-worker
+      dockerfile: Dockerfile
+    container_name: auto_acct_ocr
+    restart: unless-stopped # Critical #3: Auto-restart on failure
+    ports:
+      - "5000:5000"
+    environment:
+      - PYTHONUNBUFFERED=1
+    networks:
+      - auto-acct-network
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:5000/health" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s # Allow time for model loading
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+        reservations:
+          memory: 1.5G
+    depends_on:
+      mongodb:
+        condition: service_healthy
+
 networks:
   auto-acct-network:
     driver: bridge
@@ -81,3 +111,5 @@ volumes:
   mongo_data:
   teable_db:
   teable_data:
+
+

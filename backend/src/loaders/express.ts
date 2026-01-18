@@ -3,6 +3,7 @@ import { randomUUID } from 'crypto';
 import healthRouter from '@modules/health/routes';
 import accountingRouter from '@modules/accounting/routes';
 import flowAccountRouter from '@modules/flowaccount/routes';
+import ocrRouter from '@modules/ocr/routes';
 
 import teableRouter from '@modules/teable/routes';
 import filesRouter from '@modules/files/routes';
@@ -37,6 +38,7 @@ export function createExpressApp(): Application {
     app.use('/api/accounting', accountingRouter);
     app.use('/api/flowaccount', flowAccountRouter);
     app.use('/api/files', filesRouter);
+    app.use('/api/ocr', ocrRouter);
     app.use('/api/export', exportRouter);
     app.use('/webhooks/teable', teableRouter);
 

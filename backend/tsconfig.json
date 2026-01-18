@@ -6,15 +6,13 @@
             "ES2020"
         ],
         "moduleResolution": "bundler",
-        "types": [
-            "bun-types"
-        ],
+        "types": [],
         "strict": true,
         "noImplicitAny": true,
         "strictNullChecks": true,
         "strictFunctionTypes": true,
-        "noUnusedLocals": true,
-        "noUnusedParameters": true,
+        "noUnusedLocals": false,
+        "noUnusedParameters": false,
         "noImplicitReturns": true,
         "noFallthroughCasesInSwitch": true,
         "esModuleInterop": true,
@@ -39,8 +37,15 @@
             ],
             "@loaders/*": [
                 "loaders/*"
+            ],
+            "@models/*": [
+                "models/*"
             ]
-        }
+        },
+        "typeRoots": [
+            "./node_modules/@types",
+            "./src/types"
+        ]
     },
     "include": [
         "src/**/*"

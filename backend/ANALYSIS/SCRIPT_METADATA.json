@@ -1,0 +1,699 @@
+[
+  {
+    "path": "backend\\src\\scripts\\analyze-script-quality.ts",
+    "filename": "analyze-script-quality.ts",
+    "lines_of_code": 150,
+    "first_comment": null,
+    "imports": [
+      "fs",
+      "path"
+    ],
+    "exports": [],
+    "has_main_call": true,
+    "has_error_handling": true,
+    "purpose_guess": "Unknown"
+  },
+  {
+    "path": "backend\\src\\scripts\\generate-final-report.ts",
+    "filename": "generate-final-report.ts",
+    "lines_of_code": 85,
+    "first_comment": null,
+    "imports": [
+      "fs",
+      "path"
+    ],
+    "exports": [],
+    "has_main_call": true,
+    "has_error_handling": false,
+    "purpose_guess": "Configuration"
+  },
+  {
+    "path": "backend\\src\\scripts\\restructure-project.ts",
+    "filename": "restructure-project.ts",
+    "lines_of_code": 112,
+    "first_comment": null,
+    "imports": [
+      "fs",
+      "path"
+    ],
+    "exports": [],
+    "has_main_call": false,
+    "has_error_handling": true,
+    "purpose_guess": "Unknown"
+  },
+  {
+    "path": "backend\\src\\scripts\\testing\\manual-full-loop-test.ts",
+    "filename": "manual-full-loop-test.ts",
+    "lines_of_code": 84,
+    "first_comment": null,
+    "imports": [
+      "../../modules/teable/TeableClient",
+      "../../jobs/TeablePollingJob",
+      "../../jobs/DailyExportJob",
+      "../../modules/files/GoogleDriveService",
+      "../../modules/accounting/models/JournalEntry.model",
+      "../../modules/export/models/ExportQueue",
+      "mongoose",
+      "../../config/env"
+    ],
+    "exports": [],
+    "has_main_call": false,
+    "has_error_handling": true,
+    "purpose_guess": "Unknown"
+  },
+  {
+    "path": "backend\\src\\scripts\\testing\\run-full-simulation.ts",
+    "filename": "run-full-simulation.ts",
+    "lines_of_code": 49,
+    "first_comment": null,
+    "imports": [
+      "child_process",
+      "path"
+    ],
+    "exports": [],
+    "has_main_call": true,
+    "has_error_handling": true,
+    "purpose_guess": "Unknown"
+  },
+  {
+    "path": "backend\\src\\scripts\\testing\\seed-simulation.ts",
+    "filename": "seed-simulation.ts",
+    "lines_of_code": 99,
+    "first_comment": null,
+    "imports": [
+      "mongoose",
+      "../../config/env",
+      "fs",
+      "path",
+      "../../modules/accounting/models/JournalEntry.model",
+      "../../modules/export/models/ExportQueue",
+      "../../modules/export/models/ExportLog"
+    ],
+    "exports": [],
+    "has_main_call": false,
+    "has_error_handling": true,
+    "purpose_guess": "Unknown"
+  },
+  {
+    "path": "backend\\src\\scripts\\testing\\simple-gemini-test.ts",
+    "filename": "simple-gemini-test.ts",
+    "lines_of_code": 66,
+    "first_comment": null,
+    "imports": [
+      "@google/generative-ai",
+      "../../config/env.js"
+    ],
+    "exports": [],
+    "has_main_call": false,
+    "has_error_handling": true,
+    "purpose_guess": "Unknown"
+  },
+  {
+    "path": "backend\\src\\scripts\\testing\\simulate-bulk-data.ts",
+    "filename": "simulate-bulk-data.ts",
+    "lines_of_code": 101,
+    "first_comment": null,
+    "imports": [
+      "mongoose",
+      "../../modules/accounting/models/JournalEntry.model",
+      "../../modules/teable/TeableClient",
+      "../../config/env",
+      "../../loaders/mongoose"
+    ],
+    "exports": [],
+    "has_main_call": false,
+    "has_error_handling": true,
+    "purpose_guess": "Unknown"
+  },
+  {
+    "path": "backend\\src\\scripts\\testing\\simulate-realworld-flow.ts",
+    "filename": "simulate-realworld-flow.ts",
+    "lines_of_code": 72,
+    "first_comment": null,
+    "imports": [
+      "../../modules/teable/TeableClient",
+      "../../config/env"
+    ],
+    "exports": [],
+    "has_main_call": false,
+    "has_error_handling": true,
+    "purpose_guess": "Unknown"
+  },
+  {
+    "path": "backend\\src\\scripts\\testing\\simulate-realworld-with-ai.ts",
+    "filename": "simulate-realworld-with-ai.ts",
+    "lines_of_code": 119,
+    "first_comment": null,
+    "imports": [
+      "mongoose",
+      "../../modules/accounting/models/JournalEntry.model",
+      "../../modules/teable/TeableClient",
+      "../../modules/ai/GroqClassificationService",
+      "../../config/env",
+      "../../loaders/mongoose"
+    ],
+    "exports": [],
+    "has_main_call": false,
+    "has_error_handling": true,
+    "purpose_guess": "Unknown"
+  },
+  {
+    "path": "backend\\src\\scripts\\testing\\simulate-webhook.ts",
+    "filename": "simulate-webhook.ts",
+    "lines_of_code": 47,
+    "first_comment": null,
+    "imports": [
+      "axios",
+      "../../config/env"
+    ],
+    "exports": [],
+    "has_main_call": false,
+    "has_error_handling": true,
+    "purpose_guess": "Unknown"
+  },
+  {
+    "path": "backend\\src\\scripts\\testing\\stress-test-discord.ts",
+    "filename": "stress-test-discord.ts",
+    "lines_of_code": 74,
+    "first_comment": null,
+    "imports": [
+      "../../loaders/logger"
+    ],
+    "exports": [],
+    "has_main_call": false,
+    "has_error_handling": true,
+    "purpose_guess": "Unknown"
+  },
+  {
+    "path": "backend\\src\\scripts\\testing\\test-discord-webhooks.ts",
+    "filename": "test-discord-webhooks.ts",
+    "lines_of_code": 91,
+    "first_comment": null,
+    "imports": [
+      "../../loaders/mongoose.js",
+      "../../config/env.js"
+    ],
+    "exports": [],
+    "has_main_call": false,
+    "has_error_handling": true,
+    "purpose_guess": "Testing"
+  },
+  {
+    "path": "backend\\src\\scripts\\testing\\test-gemini-classification.ts",
+    "filename": "test-gemini-classification.ts",
+    "lines_of_code": 79,
+    "first_comment": null,
+    "imports": [
+      "../../modules/gemini/GeminiClassificationService.js",
+      "../../loaders/logger.js",
+      "../../loaders/logger.js"
+    ],
+    "exports": [],
+    "has_main_call": false,
+    "has_error_handling": true,
+    "purpose_guess": "Testing"
+  },
+  {
+    "path": "backend\\src\\scripts\\testing\\test-groq-classification.ts",
+    "filename": "test-groq-classification.ts",
+    "lines_of_code": 75,
+    "first_comment": null,
+    "imports": [
+      "../../modules/ai/GroqClassificationService.js",
+      "../../loaders/logger.js",
+      "../../loaders/logger.js"
+    ],
+    "exports": [],
+    "has_main_call": false,
+    "has_error_handling": true,
+    "purpose_guess": "Testing"
+  },
+  {
+    "path": "backend\\src\\scripts\\testing\\test-groq-connection.ts",
+    "filename": "test-groq-connection.ts",
+    "lines_of_code": 42,
+    "first_comment": null,
+    "imports": [
+      "@config/env",
+      "@modules/ai/GroqClassificationService",
+      "@loaders/logger"
+    ],
+    "exports": [],
+    "has_main_call": false,
+    "has_error_handling": true,
+    "purpose_guess": "Testing"
+  },
+  {
+    "path": "backend\\src\\scripts\\testing\\test-hybrid-logic.ts",
+    "filename": "test-hybrid-logic.ts",
+    "lines_of_code": 90,
+    "first_comment": "import { FlowAccountClient } from '@modules/flowaccount/FlowAccountClient';",
+    "imports": [
+      "@modules/flowaccount/FlowAccountSyncService",
+      "@modules/ai/GroqClassificationService"
+    ],
+    "exports": [],
+    "has_main_call": true,
+    "has_error_handling": true,
+    "purpose_guess": "Testing"
+  },
+  {
+    "path": "backend\\src\\scripts\\testing\\test-rest-api.ts",
+    "filename": "test-rest-api.ts",
+    "lines_of_code": 50,
+    "first_comment": null,
+    "imports": [
+      "axios",
+      "../../config/env.js"
+    ],
+    "exports": [],
+    "has_main_call": false,
+    "has_error_handling": true,
+    "purpose_guess": "Testing"
+  },
+  {
+    "path": "backend\\src\\scripts\\testing\\test-teable-update.ts",
+    "filename": "test-teable-update.ts",
+    "lines_of_code": 60,
+    "first_comment": null,
+    "imports": [
+      "../../modules/teable/TeableClient",
+      "../../config/env"
+    ],
+    "exports": [],
+    "has_main_call": false,
+    "has_error_handling": true,
+    "purpose_guess": "Testing"
+  },
+  {
+    "path": "backend\\src\\scripts\\testing\\test-teable.ts",
+    "filename": "test-teable.ts",
+    "lines_of_code": 43,
+    "first_comment": null,
+    "imports": [
+      "axios",
+      "../../config/env"
+    ],
+    "exports": [],
+    "has_main_call": false,
+    "has_error_handling": true,
+    "purpose_guess": "Testing"
+  },
+  {
+    "path": "backend\\src\\scripts\\testing\\verify-phase3-ready.ts",
+    "filename": "verify-phase3-ready.ts",
+    "lines_of_code": 167,
+    "first_comment": null,
+    "imports": [
+      "../../loaders/mongoose.js",
+      "../../modules/accounting/AccountingModel.js",
+      "../../loaders/logger.js"
+    ],
+    "exports": [],
+    "has_main_call": false,
+    "has_error_handling": true,
+    "purpose_guess": "Verification"
+  },
+  {
+    "path": "backend\\src\\scripts\\maintenance\\analyze-state.ts",
+    "filename": "analyze-state.ts",
+    "lines_of_code": 68,
+    "first_comment": null,
+    "imports": [
+      "../../loaders/mongoose",
+      "../../modules/accounting/models/JournalEntry.model",
+      "../../modules/export/models/ExportQueue"
+    ],
+    "exports": [],
+    "has_main_call": false,
+    "has_error_handling": true,
+    "purpose_guess": "Unknown"
+  },
+  {
+    "path": "backend\\src\\scripts\\maintenance\\check-approved-entries.ts",
+    "filename": "check-approved-entries.ts",
+    "lines_of_code": 45,
+    "first_comment": null,
+    "imports": [
+      "mongoose",
+      "../../config/env.js"
+    ],
+    "exports": [],
+    "has_main_call": false,
+    "has_error_handling": true,
+    "purpose_guess": "Maintenance"
+  },
+  {
+    "path": "backend\\src\\scripts\\maintenance\\check-queue.ts",
+    "filename": "check-queue.ts",
+    "lines_of_code": 36,
+    "first_comment": null,
+    "imports": [
+      "mongoose",
+      "../../config/env",
+      "../../modules/export/models/ExportQueue"
+    ],
+    "exports": [],
+    "has_main_call": false,
+    "has_error_handling": false,
+    "purpose_guess": "Maintenance"
+  },
+  {
+    "path": "backend\\src\\scripts\\maintenance\\clear-queue.ts",
+    "filename": "clear-queue.ts",
+    "lines_of_code": 15,
+    "first_comment": null,
+    "imports": [
+      "../../modules/export/models/ExportQueue",
+      "../../loaders/mongoose"
+    ],
+    "exports": [],
+    "has_main_call": false,
+    "has_error_handling": false,
+    "purpose_guess": "Unknown"
+  },
+  {
+    "path": "backend\\src\\scripts\\maintenance\\clear-teable.ts",
+    "filename": "clear-teable.ts",
+    "lines_of_code": 53,
+    "first_comment": null,
+    "imports": [
+      "axios",
+      "../../config/env"
+    ],
+    "exports": [],
+    "has_main_call": false,
+    "has_error_handling": true,
+    "purpose_guess": "Unknown"
+  },
+  {
+    "path": "backend\\src\\scripts\\maintenance\\debug-status.ts",
+    "filename": "debug-status.ts",
+    "lines_of_code": 71,
+    "first_comment": null,
+    "imports": [
+      "../../loaders/mongoose",
+      "../../modules/export/models/ExportQueue",
+      "../../modules/accounting/models/JournalEntry.model",
+      "../../modules/teable/TeableClient",
+      "../../config/env"
+    ],
+    "exports": [],
+    "has_main_call": false,
+    "has_error_handling": true,
+    "purpose_guess": "Unknown"
+  },
+  {
+    "path": "backend\\src\\scripts\\maintenance\\debug-teable.ts",
+    "filename": "debug-teable.ts",
+    "lines_of_code": 25,
+    "first_comment": null,
+    "imports": [
+      "axios",
+      "../../config/env"
+    ],
+    "exports": [],
+    "has_main_call": false,
+    "has_error_handling": true,
+    "purpose_guess": "Unknown"
+  },
+  {
+    "path": "backend\\src\\scripts\\maintenance\\force-poll.ts",
+    "filename": "force-poll.ts",
+    "lines_of_code": 23,
+    "first_comment": null,
+    "imports": [
+      "../../loaders/mongoose",
+      "../../jobs/TeablePollingJob",
+      "../../loaders/logger"
+    ],
+    "exports": [],
+    "has_main_call": false,
+    "has_error_handling": true,
+    "purpose_guess": "Unknown"
+  },
+  {
+    "path": "backend\\src\\scripts\\maintenance\\sync-flowaccount-cron.ts",
+    "filename": "sync-flowaccount-cron.ts",
+    "lines_of_code": 42,
+    "first_comment": null,
+    "imports": [
+      "@loaders/mongoose",
+      "@modules/flowaccount/FlowAccountSyncService",
+      "@loaders/logger",
+      "@loaders/logger"
+    ],
+    "exports": [],
+    "has_main_call": false,
+    "has_error_handling": true,
+    "purpose_guess": "Maintenance (Scheduled)"
+  },
+  {
+    "path": "backend\\src\\scripts\\maintenance\\trigger-export.ts",
+    "filename": "trigger-export.ts",
+    "lines_of_code": 46,
+    "first_comment": null,
+    "imports": [
+      "mongoose",
+      "../../jobs/DailyExportJob",
+      "../../modules/files/GoogleDriveService",
+      "../../modules/export/models/ExportQueue",
+      "../../config/env"
+    ],
+    "exports": [],
+    "has_main_call": false,
+    "has_error_handling": true,
+    "purpose_guess": "Unknown"
+  },
+  {
+    "path": "backend\\src\\scripts\\maintenance\\wipe-data.ts",
+    "filename": "wipe-data.ts",
+    "lines_of_code": 31,
+    "first_comment": null,
+    "imports": [
+      "../../loaders/mongoose",
+      "../../modules/accounting/models/JournalEntry.model",
+      "../../modules/export/models/ExportQueue",
+      "../../modules/export/models/ExportLog"
+    ],
+    "exports": [],
+    "has_main_call": false,
+    "has_error_handling": true,
+    "purpose_guess": "Unknown"
+  },
+  {
+    "path": "backend\\src\\scripts\\setup\\deploy-commands.ts",
+    "filename": "deploy-commands.ts",
+    "lines_of_code": 38,
+    "first_comment": null,
+    "imports": [
+      "discord.js",
+      "../../config/env",
+      "../../loaders/logger"
+    ],
+    "exports": [],
+    "has_main_call": false,
+    "has_error_handling": true,
+    "purpose_guess": "Unknown"
+  },
+  {
+    "path": "backend\\src\\scripts\\setup\\generate-accounting-request-doc.ts",
+    "filename": "generate-accounting-request-doc.ts",
+    "lines_of_code": 582,
+    "first_comment": null,
+    "imports": [
+      "docx",
+      "fs"
+    ],
+    "exports": [],
+    "has_main_call": true,
+    "has_error_handling": false,
+    "purpose_guess": "Configuration"
+  },
+  {
+    "path": "backend\\src\\scripts\\setup\\register-discord-commands.ts",
+    "filename": "register-discord-commands.ts",
+    "lines_of_code": 95,
+    "first_comment": null,
+    "imports": [
+      "discord.js",
+      "../../config/env",
+      "fs",
+      "path"
+    ],
+    "exports": [],
+    "has_main_call": true,
+    "has_error_handling": true,
+    "purpose_guess": "Unknown"
+  },
+  {
+    "path": "backend\\src\\scripts\\setup\\register-teable-webhook.ts",
+    "filename": "register-teable-webhook.ts",
+    "lines_of_code": 51,
+    "first_comment": null,
+    "imports": [
+      "axios",
+      "../../config/env"
+    ],
+    "exports": [],
+    "has_main_call": false,
+    "has_error_handling": true,
+    "purpose_guess": "Unknown"
+  },
+  {
+    "path": "backend\\src\\scripts\\setup\\setup-google-oauth.ts",
+    "filename": "setup-google-oauth.ts",
+    "lines_of_code": 73,
+    "first_comment": null,
+    "imports": [
+      "googleapis",
+      "google-auth-library",
+      "readline"
+    ],
+    "exports": [],
+    "has_main_call": true,
+    "has_error_handling": true,
+    "purpose_guess": "Configuration"
+  },
+  {
+    "path": "backend\\src\\scripts\\setup\\setup-teable-schema.ts",
+    "filename": "setup-teable-schema.ts",
+    "lines_of_code": 76,
+    "first_comment": "Define the required schema for Accounting Data",
+    "imports": [
+      "axios",
+      "../../config/env"
+    ],
+    "exports": [],
+    "has_main_call": false,
+    "has_error_handling": true,
+    "purpose_guess": "Configuration"
+  },
+  {
+    "path": "backend\\src\\scripts\\setup\\setup-teable.ts",
+    "filename": "setup-teable.ts",
+    "lines_of_code": 53,
+    "first_comment": null,
+    "imports": [
+      "axios",
+      "../../config/env",
+      "../../loaders/logger"
+    ],
+    "exports": [],
+    "has_main_call": false,
+    "has_error_handling": true,
+    "purpose_guess": "Configuration"
+  },
+  {
+    "path": "backend\\src\\scripts\\setup\\update-teable-options.ts",
+    "filename": "update-teable-options.ts",
+    "lines_of_code": 58,
+    "first_comment": null,
+    "imports": [
+      "axios",
+      "../../config/env"
+    ],
+    "exports": [],
+    "has_main_call": false,
+    "has_error_handling": true,
+    "purpose_guess": "Unknown"
+  },
+  {
+    "path": "backend\\src\\scripts\\tools\\analyze-scripts.ts",
+    "filename": "analyze-scripts.ts",
+    "lines_of_code": 175,
+    "first_comment": null,
+    "imports": [
+      "fs",
+      "path"
+    ],
+    "exports": [],
+    "has_main_call": true,
+    "has_error_handling": true,
+    "purpose_guess": "Unknown"
+  },
+  {
+    "path": "backend\\src\\scripts\\tools\\categorize-scripts.ts",
+    "filename": "categorize-scripts.ts",
+    "lines_of_code": 264,
+    "first_comment": null,
+    "imports": [
+      "fs",
+      "path"
+    ],
+    "exports": [],
+    "has_main_call": true,
+    "has_error_handling": true,
+    "purpose_guess": "Unknown"
+  },
+  {
+    "path": "backend\\src\\scripts\\tools\\generate-docs.ts",
+    "filename": "generate-docs.ts",
+    "lines_of_code": 195,
+    "first_comment": null,
+    "imports": [
+      "fs",
+      "path"
+    ],
+    "exports": [],
+    "has_main_call": true,
+    "has_error_handling": true,
+    "purpose_guess": "Configuration"
+  },
+  {
+    "path": "backend\\src\\scripts\\tools\\list-folders.ts",
+    "filename": "list-folders.ts",
+    "lines_of_code": 82,
+    "first_comment": null,
+    "imports": [
+      "fs",
+      "path"
+    ],
+    "exports": [],
+    "has_main_call": true,
+    "has_error_handling": true,
+    "purpose_guess": "Maintenance"
+  },
+  {
+    "path": "backend\\src\\scripts\\tools\\list-gemini-models.ts",
+    "filename": "list-gemini-models.ts",
+    "lines_of_code": 51,
+    "first_comment": null,
+    "imports": [
+      "@google/generative-ai",
+      "../../config/env.js"
+    ],
+    "exports": [],
+    "has_main_call": false,
+    "has_error_handling": true,
+    "purpose_guess": "Maintenance"
+  },
+  {
+    "path": "backend\\src\\scripts\\legacy\\add-drcr-columns.ts",
+    "filename": "add-drcr-columns.ts",
+    "lines_of_code": 27,
+    "first_comment": null,
+    "imports": [
+      "axios",
+      "../../config/env"
+    ],
+    "exports": [],
+    "has_main_call": false,
+    "has_error_handling": true,
+    "purpose_guess": "Unknown"
+  },
+  {
+    "path": "backend\\src\\scripts\\legacy\\add-export-path-column.ts",
+    "filename": "add-export-path-column.ts",
+    "lines_of_code": 35,
+    "first_comment": null,
+    "imports": [
+      "axios",
+      "../../config/env"
+    ],
+    "exports": [],
+    "has_main_call": false,
+    "has_error_handling": true,
+    "purpose_guess": "Unknown"
+  }
+]

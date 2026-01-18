@@ -1,0 +1,1186 @@
+[
+  {
+    "script": "generate-accounting-request-doc.ts",
+    "path": "scripts\\generate-accounting-request-doc.ts",
+    "quality_score": 80,
+    "checks": {
+      "error_handling": {
+        "status": "WARN",
+        "notes": "No try-catch blocks detected. Ensure top-level error handling."
+      },
+      "typescript": {
+        "status": "PASS",
+        "notes": "No explicit 'any' types found."
+      },
+      "financial_safety": {
+        "status": "N/A",
+        "notes": "Not a financial script."
+      },
+      "security": {
+        "status": "PASS",
+        "notes": "No obvious hardcoded secrets found."
+      }
+    },
+    "recommendations": [
+      "Add try-catch blocks for error safety."
+    ]
+  },
+  {
+    "script": "check-queue.ts",
+    "path": "backend\\scripts\\check-queue.ts",
+    "quality_score": 80,
+    "checks": {
+      "error_handling": {
+        "status": "WARN",
+        "notes": "No try-catch blocks detected. Ensure top-level error handling."
+      },
+      "typescript": {
+        "status": "PASS",
+        "notes": "No explicit 'any' types found."
+      },
+      "financial_safety": {
+        "status": "N/A",
+        "notes": "Not a financial script."
+      },
+      "security": {
+        "status": "PASS",
+        "notes": "No obvious hardcoded secrets found."
+      }
+    },
+    "recommendations": [
+      "Add try-catch blocks for error safety."
+    ]
+  },
+  {
+    "script": "clear-queue.ts",
+    "path": "backend\\scripts\\clear-queue.ts",
+    "quality_score": 80,
+    "checks": {
+      "error_handling": {
+        "status": "WARN",
+        "notes": "No try-catch blocks detected. Ensure top-level error handling."
+      },
+      "typescript": {
+        "status": "PASS",
+        "notes": "No explicit 'any' types found."
+      },
+      "financial_safety": {
+        "status": "N/A",
+        "notes": "Not a financial script."
+      },
+      "security": {
+        "status": "PASS",
+        "notes": "No obvious hardcoded secrets found."
+      }
+    },
+    "recommendations": [
+      "Add try-catch blocks for error safety."
+    ]
+  },
+  {
+    "script": "add-drcr-columns.ts",
+    "path": "backend\\scripts\\add-drcr-columns.ts",
+    "quality_score": 85,
+    "checks": {
+      "error_handling": {
+        "status": "PASS",
+        "notes": "Basic try-catch blocks found."
+      },
+      "typescript": {
+        "status": "WARN",
+        "notes": "Found 1 usage(s) of 'any'."
+      },
+      "financial_safety": {
+        "status": "N/A",
+        "notes": "Not a financial script."
+      },
+      "security": {
+        "status": "PASS",
+        "notes": "No obvious hardcoded secrets found."
+      }
+    },
+    "recommendations": [
+      "Refactor 1 'any' types to specific interfaces."
+    ]
+  },
+  {
+    "script": "add-export-path-column.ts",
+    "path": "backend\\scripts\\add-export-path-column.ts",
+    "quality_score": 85,
+    "checks": {
+      "error_handling": {
+        "status": "PASS",
+        "notes": "Basic try-catch blocks found."
+      },
+      "typescript": {
+        "status": "WARN",
+        "notes": "Found 1 usage(s) of 'any'."
+      },
+      "financial_safety": {
+        "status": "N/A",
+        "notes": "Not a financial script."
+      },
+      "security": {
+        "status": "PASS",
+        "notes": "No obvious hardcoded secrets found."
+      }
+    },
+    "recommendations": [
+      "Refactor 1 'any' types to specific interfaces."
+    ]
+  },
+  {
+    "script": "clear-teable.ts",
+    "path": "backend\\scripts\\clear-teable.ts",
+    "quality_score": 85,
+    "checks": {
+      "error_handling": {
+        "status": "PASS",
+        "notes": "Basic try-catch blocks found."
+      },
+      "typescript": {
+        "status": "WARN",
+        "notes": "Found 2 usage(s) of 'any'."
+      },
+      "financial_safety": {
+        "status": "N/A",
+        "notes": "Not a financial script."
+      },
+      "security": {
+        "status": "PASS",
+        "notes": "No obvious hardcoded secrets found."
+      }
+    },
+    "recommendations": [
+      "Refactor 2 'any' types to specific interfaces."
+    ]
+  },
+  {
+    "script": "debug-status.ts",
+    "path": "backend\\scripts\\debug-status.ts",
+    "quality_score": 85,
+    "checks": {
+      "error_handling": {
+        "status": "PASS",
+        "notes": "Basic try-catch blocks found."
+      },
+      "typescript": {
+        "status": "WARN",
+        "notes": "Found 3 usage(s) of 'any'."
+      },
+      "financial_safety": {
+        "status": "N/A",
+        "notes": "Not a financial script."
+      },
+      "security": {
+        "status": "PASS",
+        "notes": "No obvious hardcoded secrets found."
+      }
+    },
+    "recommendations": [
+      "Refactor 3 'any' types to specific interfaces."
+    ]
+  },
+  {
+    "script": "debug-teable.ts",
+    "path": "backend\\scripts\\debug-teable.ts",
+    "quality_score": 85,
+    "checks": {
+      "error_handling": {
+        "status": "PASS",
+        "notes": "Basic try-catch blocks found."
+      },
+      "typescript": {
+        "status": "WARN",
+        "notes": "Found 1 usage(s) of 'any'."
+      },
+      "financial_safety": {
+        "status": "N/A",
+        "notes": "Not a financial script."
+      },
+      "security": {
+        "status": "PASS",
+        "notes": "No obvious hardcoded secrets found."
+      }
+    },
+    "recommendations": [
+      "Refactor 1 'any' types to specific interfaces."
+    ]
+  },
+  {
+    "script": "force-poll.ts",
+    "path": "backend\\scripts\\force-poll.ts",
+    "quality_score": 85,
+    "checks": {
+      "error_handling": {
+        "status": "PASS",
+        "notes": "Basic try-catch blocks found."
+      },
+      "typescript": {
+        "status": "WARN",
+        "notes": "Found 1 usage(s) of 'any'."
+      },
+      "financial_safety": {
+        "status": "N/A",
+        "notes": "Not a financial script."
+      },
+      "security": {
+        "status": "PASS",
+        "notes": "No obvious hardcoded secrets found."
+      }
+    },
+    "recommendations": [
+      "Refactor 1 'any' types to specific interfaces."
+    ]
+  },
+  {
+    "script": "register-teable-webhook.ts",
+    "path": "backend\\scripts\\register-teable-webhook.ts",
+    "quality_score": 85,
+    "checks": {
+      "error_handling": {
+        "status": "PASS",
+        "notes": "Basic try-catch blocks found."
+      },
+      "typescript": {
+        "status": "WARN",
+        "notes": "Found 2 usage(s) of 'any'."
+      },
+      "financial_safety": {
+        "status": "N/A",
+        "notes": "Not a financial script."
+      },
+      "security": {
+        "status": "PASS",
+        "notes": "No obvious hardcoded secrets found."
+      }
+    },
+    "recommendations": [
+      "Refactor 2 'any' types to specific interfaces."
+    ]
+  },
+  {
+    "script": "seed-simulation.ts",
+    "path": "backend\\scripts\\seed-simulation.ts",
+    "quality_score": 85,
+    "checks": {
+      "error_handling": {
+        "status": "PASS",
+        "notes": "Basic try-catch blocks found."
+      },
+      "typescript": {
+        "status": "WARN",
+        "notes": "Found 2 usage(s) of 'any'."
+      },
+      "financial_safety": {
+        "status": "N/A",
+        "notes": "Not a financial script."
+      },
+      "security": {
+        "status": "PASS",
+        "notes": "No obvious hardcoded secrets found."
+      }
+    },
+    "recommendations": [
+      "Refactor 2 'any' types to specific interfaces."
+    ]
+  },
+  {
+    "script": "setup-google-oauth.ts",
+    "path": "backend\\scripts\\setup-google-oauth.ts",
+    "quality_score": 85,
+    "checks": {
+      "error_handling": {
+        "status": "PASS",
+        "notes": "Basic try-catch blocks found."
+      },
+      "typescript": {
+        "status": "WARN",
+        "notes": "Found 1 usage(s) of 'any'."
+      },
+      "financial_safety": {
+        "status": "N/A",
+        "notes": "Not a financial script."
+      },
+      "security": {
+        "status": "PASS",
+        "notes": "No obvious hardcoded secrets found."
+      }
+    },
+    "recommendations": [
+      "Refactor 1 'any' types to specific interfaces."
+    ]
+  },
+  {
+    "script": "setup-teable-schema.ts",
+    "path": "backend\\scripts\\setup-teable-schema.ts",
+    "quality_score": 85,
+    "checks": {
+      "error_handling": {
+        "status": "PASS",
+        "notes": "Basic try-catch blocks found."
+      },
+      "typescript": {
+        "status": "WARN",
+        "notes": "Found 1 usage(s) of 'any'."
+      },
+      "financial_safety": {
+        "status": "PASS",
+        "notes": "Money fields detected, likely using Satang/Integers."
+      },
+      "security": {
+        "status": "PASS",
+        "notes": "No obvious hardcoded secrets found."
+      }
+    },
+    "recommendations": [
+      "Refactor 1 'any' types to specific interfaces."
+    ]
+  },
+  {
+    "script": "simulate-bulk-data.ts",
+    "path": "backend\\scripts\\simulate-bulk-data.ts",
+    "quality_score": 85,
+    "checks": {
+      "error_handling": {
+        "status": "PASS",
+        "notes": "Basic try-catch blocks found."
+      },
+      "typescript": {
+        "status": "WARN",
+        "notes": "Found 1 usage(s) of 'any'."
+      },
+      "financial_safety": {
+        "status": "N/A",
+        "notes": "Not a financial script."
+      },
+      "security": {
+        "status": "PASS",
+        "notes": "No obvious hardcoded secrets found."
+      }
+    },
+    "recommendations": [
+      "Refactor 1 'any' types to specific interfaces."
+    ]
+  },
+  {
+    "script": "simulate-realworld-flow.ts",
+    "path": "backend\\scripts\\simulate-realworld-flow.ts",
+    "quality_score": 85,
+    "checks": {
+      "error_handling": {
+        "status": "PASS",
+        "notes": "Basic try-catch blocks found."
+      },
+      "typescript": {
+        "status": "WARN",
+        "notes": "Found 1 usage(s) of 'any'."
+      },
+      "financial_safety": {
+        "status": "N/A",
+        "notes": "Not a financial script."
+      },
+      "security": {
+        "status": "PASS",
+        "notes": "No obvious hardcoded secrets found."
+      }
+    },
+    "recommendations": [
+      "Refactor 1 'any' types to specific interfaces."
+    ]
+  },
+  {
+    "script": "simulate-realworld-with-ai.ts",
+    "path": "backend\\scripts\\simulate-realworld-with-ai.ts",
+    "quality_score": 85,
+    "checks": {
+      "error_handling": {
+        "status": "PASS",
+        "notes": "Basic try-catch blocks found."
+      },
+      "typescript": {
+        "status": "WARN",
+        "notes": "Found 1 usage(s) of 'any'."
+      },
+      "financial_safety": {
+        "status": "N/A",
+        "notes": "Not a financial script."
+      },
+      "security": {
+        "status": "PASS",
+        "notes": "No obvious hardcoded secrets found."
+      }
+    },
+    "recommendations": [
+      "Refactor 1 'any' types to specific interfaces."
+    ]
+  },
+  {
+    "script": "simulate-webhook.ts",
+    "path": "backend\\scripts\\simulate-webhook.ts",
+    "quality_score": 85,
+    "checks": {
+      "error_handling": {
+        "status": "PASS",
+        "notes": "Basic try-catch blocks found."
+      },
+      "typescript": {
+        "status": "WARN",
+        "notes": "Found 1 usage(s) of 'any'."
+      },
+      "financial_safety": {
+        "status": "N/A",
+        "notes": "Not a financial script."
+      },
+      "security": {
+        "status": "PASS",
+        "notes": "No obvious hardcoded secrets found."
+      }
+    },
+    "recommendations": [
+      "Refactor 1 'any' types to specific interfaces."
+    ]
+  },
+  {
+    "script": "test-groq-connection.ts",
+    "path": "backend\\scripts\\test-groq-connection.ts",
+    "quality_score": 85,
+    "checks": {
+      "error_handling": {
+        "status": "PASS",
+        "notes": "Basic try-catch blocks found."
+      },
+      "typescript": {
+        "status": "WARN",
+        "notes": "Found 1 usage(s) of 'any'."
+      },
+      "financial_safety": {
+        "status": "N/A",
+        "notes": "Not a financial script."
+      },
+      "security": {
+        "status": "PASS",
+        "notes": "No obvious hardcoded secrets found."
+      }
+    },
+    "recommendations": [
+      "Refactor 1 'any' types to specific interfaces."
+    ]
+  },
+  {
+    "script": "test-teable-update.ts",
+    "path": "backend\\scripts\\test-teable-update.ts",
+    "quality_score": 85,
+    "checks": {
+      "error_handling": {
+        "status": "PASS",
+        "notes": "Basic try-catch blocks found."
+      },
+      "typescript": {
+        "status": "WARN",
+        "notes": "Found 1 usage(s) of 'any'."
+      },
+      "financial_safety": {
+        "status": "N/A",
+        "notes": "Not a financial script."
+      },
+      "security": {
+        "status": "PASS",
+        "notes": "No obvious hardcoded secrets found."
+      }
+    },
+    "recommendations": [
+      "Refactor 1 'any' types to specific interfaces."
+    ]
+  },
+  {
+    "script": "test-teable.ts",
+    "path": "backend\\scripts\\test-teable.ts",
+    "quality_score": 85,
+    "checks": {
+      "error_handling": {
+        "status": "PASS",
+        "notes": "Basic try-catch blocks found."
+      },
+      "typescript": {
+        "status": "WARN",
+        "notes": "Found 2 usage(s) of 'any'."
+      },
+      "financial_safety": {
+        "status": "N/A",
+        "notes": "Not a financial script."
+      },
+      "security": {
+        "status": "PASS",
+        "notes": "No obvious hardcoded secrets found."
+      }
+    },
+    "recommendations": [
+      "Refactor 2 'any' types to specific interfaces."
+    ]
+  },
+  {
+    "script": "update-teable-options.ts",
+    "path": "backend\\scripts\\update-teable-options.ts",
+    "quality_score": 85,
+    "checks": {
+      "error_handling": {
+        "status": "PASS",
+        "notes": "Basic try-catch blocks found."
+      },
+      "typescript": {
+        "status": "WARN",
+        "notes": "Found 3 usage(s) of 'any'."
+      },
+      "financial_safety": {
+        "status": "N/A",
+        "notes": "Not a financial script."
+      },
+      "security": {
+        "status": "PASS",
+        "notes": "No obvious hardcoded secrets found."
+      }
+    },
+    "recommendations": [
+      "Refactor 3 'any' types to specific interfaces."
+    ]
+  },
+  {
+    "script": "analyze-scripts.ts",
+    "path": "backend\\src\\scripts\\analyze-scripts.ts",
+    "quality_score": 85,
+    "checks": {
+      "error_handling": {
+        "status": "PASS",
+        "notes": "Basic try-catch blocks found."
+      },
+      "typescript": {
+        "status": "WARN",
+        "notes": "Found 1 usage(s) of 'any'."
+      },
+      "financial_safety": {
+        "status": "N/A",
+        "notes": "Not a financial script."
+      },
+      "security": {
+        "status": "PASS",
+        "notes": "No obvious hardcoded secrets found."
+      }
+    },
+    "recommendations": [
+      "Refactor 1 'any' types to specific interfaces."
+    ]
+  },
+  {
+    "script": "list-gemini-models.ts",
+    "path": "backend\\src\\scripts\\list-gemini-models.ts",
+    "quality_score": 85,
+    "checks": {
+      "error_handling": {
+        "status": "PASS",
+        "notes": "Basic try-catch blocks found."
+      },
+      "typescript": {
+        "status": "WARN",
+        "notes": "Found 1 usage(s) of 'any'."
+      },
+      "financial_safety": {
+        "status": "N/A",
+        "notes": "Not a financial script."
+      },
+      "security": {
+        "status": "PASS",
+        "notes": "No obvious hardcoded secrets found."
+      }
+    },
+    "recommendations": [
+      "Refactor 1 'any' types to specific interfaces."
+    ]
+  },
+  {
+    "script": "register-discord-commands.ts",
+    "path": "backend\\src\\scripts\\register-discord-commands.ts",
+    "quality_score": 85,
+    "checks": {
+      "error_handling": {
+        "status": "PASS",
+        "notes": "Basic try-catch blocks found."
+      },
+      "typescript": {
+        "status": "WARN",
+        "notes": "Found 3 usage(s) of 'any'."
+      },
+      "financial_safety": {
+        "status": "N/A",
+        "notes": "Not a financial script."
+      },
+      "security": {
+        "status": "PASS",
+        "notes": "No obvious hardcoded secrets found."
+      }
+    },
+    "recommendations": [
+      "Refactor 3 'any' types to specific interfaces."
+    ]
+  },
+  {
+    "script": "setup-teable.ts",
+    "path": "backend\\src\\scripts\\setup-teable.ts",
+    "quality_score": 85,
+    "checks": {
+      "error_handling": {
+        "status": "PASS",
+        "notes": "Basic try-catch blocks found."
+      },
+      "typescript": {
+        "status": "WARN",
+        "notes": "Found 2 usage(s) of 'any'."
+      },
+      "financial_safety": {
+        "status": "N/A",
+        "notes": "Not a financial script."
+      },
+      "security": {
+        "status": "PASS",
+        "notes": "No obvious hardcoded secrets found."
+      }
+    },
+    "recommendations": [
+      "Refactor 2 'any' types to specific interfaces."
+    ]
+  },
+  {
+    "script": "simple-gemini-test.ts",
+    "path": "backend\\src\\scripts\\simple-gemini-test.ts",
+    "quality_score": 85,
+    "checks": {
+      "error_handling": {
+        "status": "PASS",
+        "notes": "Basic try-catch blocks found."
+      },
+      "typescript": {
+        "status": "WARN",
+        "notes": "Found 2 usage(s) of 'any'."
+      },
+      "financial_safety": {
+        "status": "N/A",
+        "notes": "Not a financial script."
+      },
+      "security": {
+        "status": "PASS",
+        "notes": "No obvious hardcoded secrets found."
+      }
+    },
+    "recommendations": [
+      "Refactor 2 'any' types to specific interfaces."
+    ]
+  },
+  {
+    "script": "test-rest-api.ts",
+    "path": "backend\\src\\scripts\\test-rest-api.ts",
+    "quality_score": 85,
+    "checks": {
+      "error_handling": {
+        "status": "PASS",
+        "notes": "Basic try-catch blocks found."
+      },
+      "typescript": {
+        "status": "WARN",
+        "notes": "Found 1 usage(s) of 'any'."
+      },
+      "financial_safety": {
+        "status": "N/A",
+        "notes": "Not a financial script."
+      },
+      "security": {
+        "status": "PASS",
+        "notes": "No obvious hardcoded secrets found."
+      }
+    },
+    "recommendations": [
+      "Refactor 1 'any' types to specific interfaces."
+    ]
+  },
+  {
+    "script": "test-teable.ts",
+    "path": "backend\\src\\scripts\\test-teable.ts",
+    "quality_score": 85,
+    "checks": {
+      "error_handling": {
+        "status": "PASS",
+        "notes": "Basic try-catch blocks found."
+      },
+      "typescript": {
+        "status": "WARN",
+        "notes": "Found 1 usage(s) of 'any'."
+      },
+      "financial_safety": {
+        "status": "N/A",
+        "notes": "Not a financial script."
+      },
+      "security": {
+        "status": "PASS",
+        "notes": "No obvious hardcoded secrets found."
+      }
+    },
+    "recommendations": [
+      "Refactor 1 'any' types to specific interfaces."
+    ]
+  },
+  {
+    "script": "analyze-state.ts",
+    "path": "backend\\scripts\\analyze-state.ts",
+    "quality_score": 100,
+    "checks": {
+      "error_handling": {
+        "status": "PASS",
+        "notes": "Basic try-catch blocks found."
+      },
+      "typescript": {
+        "status": "PASS",
+        "notes": "No explicit 'any' types found."
+      },
+      "financial_safety": {
+        "status": "N/A",
+        "notes": "Not a financial script."
+      },
+      "security": {
+        "status": "PASS",
+        "notes": "No obvious hardcoded secrets found."
+      }
+    },
+    "recommendations": []
+  },
+  {
+    "script": "deploy-commands.ts",
+    "path": "backend\\scripts\\deploy-commands.ts",
+    "quality_score": 100,
+    "checks": {
+      "error_handling": {
+        "status": "PASS",
+        "notes": "Basic try-catch blocks found."
+      },
+      "typescript": {
+        "status": "PASS",
+        "notes": "No explicit 'any' types found."
+      },
+      "financial_safety": {
+        "status": "N/A",
+        "notes": "Not a financial script."
+      },
+      "security": {
+        "status": "PASS",
+        "notes": "No obvious hardcoded secrets found."
+      }
+    },
+    "recommendations": []
+  },
+  {
+    "script": "run-full-simulation.ts",
+    "path": "backend\\scripts\\run-full-simulation.ts",
+    "quality_score": 100,
+    "checks": {
+      "error_handling": {
+        "status": "PASS",
+        "notes": "Basic try-catch blocks found."
+      },
+      "typescript": {
+        "status": "PASS",
+        "notes": "No explicit 'any' types found."
+      },
+      "financial_safety": {
+        "status": "N/A",
+        "notes": "Not a financial script."
+      },
+      "security": {
+        "status": "PASS",
+        "notes": "No obvious hardcoded secrets found."
+      }
+    },
+    "recommendations": []
+  },
+  {
+    "script": "stress-test-discord.ts",
+    "path": "backend\\scripts\\stress-test-discord.ts",
+    "quality_score": 100,
+    "checks": {
+      "error_handling": {
+        "status": "PASS",
+        "notes": "Basic try-catch blocks found."
+      },
+      "typescript": {
+        "status": "PASS",
+        "notes": "No explicit 'any' types found."
+      },
+      "financial_safety": {
+        "status": "N/A",
+        "notes": "Not a financial script."
+      },
+      "security": {
+        "status": "PASS",
+        "notes": "No obvious hardcoded secrets found."
+      }
+    },
+    "recommendations": []
+  },
+  {
+    "script": "test-discord-webhooks.ts",
+    "path": "backend\\scripts\\test-discord-webhooks.ts",
+    "quality_score": 100,
+    "checks": {
+      "error_handling": {
+        "status": "PASS",
+        "notes": "Basic try-catch blocks found."
+      },
+      "typescript": {
+        "status": "PASS",
+        "notes": "No explicit 'any' types found."
+      },
+      "financial_safety": {
+        "status": "N/A",
+        "notes": "Not a financial script."
+      },
+      "security": {
+        "status": "PASS",
+        "notes": "No obvious hardcoded secrets found."
+      }
+    },
+    "recommendations": []
+  },
+  {
+    "script": "trigger-export.ts",
+    "path": "backend\\scripts\\trigger-export.ts",
+    "quality_score": 100,
+    "checks": {
+      "error_handling": {
+        "status": "PASS",
+        "notes": "Basic try-catch blocks found."
+      },
+      "typescript": {
+        "status": "PASS",
+        "notes": "No explicit 'any' types found."
+      },
+      "financial_safety": {
+        "status": "N/A",
+        "notes": "Not a financial script."
+      },
+      "security": {
+        "status": "PASS",
+        "notes": "No obvious hardcoded secrets found."
+      }
+    },
+    "recommendations": []
+  },
+  {
+    "script": "wipe-data.ts",
+    "path": "backend\\scripts\\wipe-data.ts",
+    "quality_score": 100,
+    "checks": {
+      "error_handling": {
+        "status": "PASS",
+        "notes": "Basic try-catch blocks found."
+      },
+      "typescript": {
+        "status": "PASS",
+        "notes": "No explicit 'any' types found."
+      },
+      "financial_safety": {
+        "status": "N/A",
+        "notes": "Not a financial script."
+      },
+      "security": {
+        "status": "PASS",
+        "notes": "No obvious hardcoded secrets found."
+      }
+    },
+    "recommendations": []
+  },
+  {
+    "script": "categorize-scripts.ts",
+    "path": "backend\\src\\scripts\\categorize-scripts.ts",
+    "quality_score": 100,
+    "checks": {
+      "error_handling": {
+        "status": "PASS",
+        "notes": "Basic try-catch blocks found."
+      },
+      "typescript": {
+        "status": "PASS",
+        "notes": "No explicit 'any' types found."
+      },
+      "financial_safety": {
+        "status": "N/A",
+        "notes": "Not a financial script."
+      },
+      "security": {
+        "status": "PASS",
+        "notes": "No obvious hardcoded secrets found."
+      }
+    },
+    "recommendations": []
+  },
+  {
+    "script": "check-approved-entries.ts",
+    "path": "backend\\src\\scripts\\check-approved-entries.ts",
+    "quality_score": 100,
+    "checks": {
+      "error_handling": {
+        "status": "PASS",
+        "notes": "Basic try-catch blocks found."
+      },
+      "typescript": {
+        "status": "PASS",
+        "notes": "No explicit 'any' types found."
+      },
+      "financial_safety": {
+        "status": "N/A",
+        "notes": "Not a financial script."
+      },
+      "security": {
+        "status": "PASS",
+        "notes": "No obvious hardcoded secrets found."
+      }
+    },
+    "recommendations": []
+  },
+  {
+    "script": "generate-docs.ts",
+    "path": "backend\\src\\scripts\\generate-docs.ts",
+    "quality_score": 100,
+    "checks": {
+      "error_handling": {
+        "status": "PASS",
+        "notes": "Basic try-catch blocks found."
+      },
+      "typescript": {
+        "status": "PASS",
+        "notes": "No explicit 'any' types found."
+      },
+      "financial_safety": {
+        "status": "N/A",
+        "notes": "Not a financial script."
+      },
+      "security": {
+        "status": "PASS",
+        "notes": "No obvious hardcoded secrets found."
+      }
+    },
+    "recommendations": []
+  },
+  {
+    "script": "list-folders.ts",
+    "path": "backend\\src\\scripts\\list-folders.ts",
+    "quality_score": 100,
+    "checks": {
+      "error_handling": {
+        "status": "PASS",
+        "notes": "Basic try-catch blocks found."
+      },
+      "typescript": {
+        "status": "PASS",
+        "notes": "No explicit 'any' types found."
+      },
+      "financial_safety": {
+        "status": "N/A",
+        "notes": "Not a financial script."
+      },
+      "security": {
+        "status": "PASS",
+        "notes": "No obvious hardcoded secrets found."
+      }
+    },
+    "recommendations": []
+  },
+  {
+    "script": "manual-full-loop-test.ts",
+    "path": "backend\\src\\scripts\\manual-full-loop-test.ts",
+    "quality_score": 100,
+    "checks": {
+      "error_handling": {
+        "status": "PASS",
+        "notes": "Basic try-catch blocks found."
+      },
+      "typescript": {
+        "status": "PASS",
+        "notes": "No explicit 'any' types found."
+      },
+      "financial_safety": {
+        "status": "N/A",
+        "notes": "Not a financial script."
+      },
+      "security": {
+        "status": "PASS",
+        "notes": "No obvious hardcoded secrets found."
+      }
+    },
+    "recommendations": []
+  },
+  {
+    "script": "sync-flowaccount-cron.ts",
+    "path": "backend\\src\\scripts\\sync-flowaccount-cron.ts",
+    "quality_score": 100,
+    "checks": {
+      "error_handling": {
+        "status": "PASS",
+        "notes": "Basic try-catch blocks found."
+      },
+      "typescript": {
+        "status": "PASS",
+        "notes": "No explicit 'any' types found."
+      },
+      "financial_safety": {
+        "status": "N/A",
+        "notes": "Not a financial script."
+      },
+      "security": {
+        "status": "PASS",
+        "notes": "No obvious hardcoded secrets found."
+      }
+    },
+    "recommendations": []
+  },
+  {
+    "script": "test-discord-webhooks.ts",
+    "path": "backend\\src\\scripts\\test-discord-webhooks.ts",
+    "quality_score": 100,
+    "checks": {
+      "error_handling": {
+        "status": "PASS",
+        "notes": "Basic try-catch blocks found."
+      },
+      "typescript": {
+        "status": "PASS",
+        "notes": "No explicit 'any' types found."
+      },
+      "financial_safety": {
+        "status": "N/A",
+        "notes": "Not a financial script."
+      },
+      "security": {
+        "status": "PASS",
+        "notes": "No obvious hardcoded secrets found."
+      }
+    },
+    "recommendations": []
+  },
+  {
+    "script": "test-gemini-classification.ts",
+    "path": "backend\\src\\scripts\\test-gemini-classification.ts",
+    "quality_score": 100,
+    "checks": {
+      "error_handling": {
+        "status": "PASS",
+        "notes": "Basic try-catch blocks found."
+      },
+      "typescript": {
+        "status": "PASS",
+        "notes": "No explicit 'any' types found."
+      },
+      "financial_safety": {
+        "status": "N/A",
+        "notes": "Not a financial script."
+      },
+      "security": {
+        "status": "PASS",
+        "notes": "No obvious hardcoded secrets found."
+      }
+    },
+    "recommendations": []
+  },
+  {
+    "script": "test-groq-classification.ts",
+    "path": "backend\\src\\scripts\\test-groq-classification.ts",
+    "quality_score": 100,
+    "checks": {
+      "error_handling": {
+        "status": "PASS",
+        "notes": "Basic try-catch blocks found."
+      },
+      "typescript": {
+        "status": "PASS",
+        "notes": "No explicit 'any' types found."
+      },
+      "financial_safety": {
+        "status": "N/A",
+        "notes": "Not a financial script."
+      },
+      "security": {
+        "status": "PASS",
+        "notes": "No obvious hardcoded secrets found."
+      }
+    },
+    "recommendations": []
+  },
+  {
+    "script": "test-groq-connection.ts",
+    "path": "backend\\src\\scripts\\test-groq-connection.ts",
+    "quality_score": 100,
+    "checks": {
+      "error_handling": {
+        "status": "PASS",
+        "notes": "Basic try-catch blocks found."
+      },
+      "typescript": {
+        "status": "PASS",
+        "notes": "No explicit 'any' types found."
+      },
+      "financial_safety": {
+        "status": "N/A",
+        "notes": "Not a financial script."
+      },
+      "security": {
+        "status": "PASS",
+        "notes": "No obvious hardcoded secrets found."
+      }
+    },
+    "recommendations": []
+  },
+  {
+    "script": "test-hybrid-logic.ts",
+    "path": "backend\\src\\scripts\\test-hybrid-logic.ts",
+    "quality_score": 100,
+    "checks": {
+      "error_handling": {
+        "status": "PASS",
+        "notes": "Basic try-catch blocks found."
+      },
+      "typescript": {
+        "status": "PASS",
+        "notes": "No explicit 'any' types found."
+      },
+      "financial_safety": {
+        "status": "N/A",
+        "notes": "Not a financial script."
+      },
+      "security": {
+        "status": "PASS",
+        "notes": "No obvious hardcoded secrets found."
+      }
+    },
+    "recommendations": []
+  },
+  {
+    "script": "verify-phase3-ready.ts",
+    "path": "backend\\src\\scripts\\verify-phase3-ready.ts",
+    "quality_score": 100,
+    "checks": {
+      "error_handling": {
+        "status": "PASS",
+        "notes": "Basic try-catch blocks found."
+      },
+      "typescript": {
+        "status": "PASS",
+        "notes": "No explicit 'any' types found."
+      },
+      "financial_safety": {
+        "status": "N/A",
+        "notes": "Not a financial script."
+      },
+      "security": {
+        "status": "PASS",
+        "notes": "No obvious hardcoded secrets found."
+      }
+    },
+    "recommendations": []
+  }
+]

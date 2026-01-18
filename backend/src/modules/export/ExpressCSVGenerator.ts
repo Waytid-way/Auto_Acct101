@@ -1,5 +1,5 @@
 import { IJournalEntry } from '@modules/accounting/models/JournalEntry.model';
-import { formatMoney } from '@types/money';
+import { formatMoney } from '../../types/money';
 import fs from 'fs';
 import path from 'path';
 
