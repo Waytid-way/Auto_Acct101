@@ -3,7 +3,8 @@
     "compilerOptions": {
         "rootDir": "..",
         "types": [
-            "bun-types"
+            "@types/bun",
+            "@types/jest"
         ],
         "noUnusedLocals": false,
         "noUnusedParameters": false
