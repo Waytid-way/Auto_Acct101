@@ -1,21 +1,30 @@
 import { google } from 'googleapis';
-import logger from '@loaders/logger';
 import stream from 'stream';
+import logger from '../../loaders/logger';
 
 export class GoogleDriveService {
+    private oauth2Client;
     private drive;
 
     constructor() {
-        if (!process.env.GOOGLE_APPLICATION_CREDENTIALS) {
-            logger.warn('GOOGLE_APPLICATION_CREDENTIALS not set. Google Drive Service will fail on operations.');
+        // Phase 6: Use OAuth 2.0 User Credentials (to bypass Service Account 0GB Quota)
+        // See ADR-001 for details.
+
+        const clientId = process.env.GOOGLE_CLIENT_ID;
+        const clientSecret = process.env.GOOGLE_CLIENT_SECRET;
+        const redirectUri = process.env.GOOGLE_REDIRECT_URI;
+        const refreshToken = process.env.GOOGLE_REFRESH_TOKEN;
+
+        if (!clientId || !clientSecret || !refreshToken) {
+            logger.warn('Google Drive OAuth credentials missing. Uploads will fail.');
+            // Initialize with empty auth to prevent crash on startup, but methods will fail
+            this.oauth2Client = new google.auth.OAuth2();
+        } else {
+            this.oauth2Client = new google.auth.OAuth2(clientId, clientSecret, redirectUri);
+            this.oauth2Client.setCredentials({ refresh_token: refreshToken });
         }
 
-        const auth = new google.auth.GoogleAuth({
-            keyFile: process.env.GOOGLE_APPLICATION_CREDENTIALS,
-            scopes: ['https://www.googleapis.com/auth/drive.file']
-        });
-
-        this.drive = google.drive({ version: 'v3', auth });
+        this.drive = google.drive({ version: 'v3', auth: this.oauth2Client });
     }
 
     /**
@@ -27,10 +36,17 @@ export class GoogleDriveService {
      */
     async uploadFile(fileName: string, buffer: Buffer, mimeType: string = 'text/csv'): Promise<{ fileId: string; webViewLink: string }> {
         try {
-            const fileMetadata = {
+            // Ensure token is valid/refreshed
+            // googleapis automatically refreshes access token if refresh_token is present
+
+            const fileMetadata: any = {
                 name: fileName,
-                // Optional: parents: [folderId] if we add that to env later
             };
+
+            // Support uploading to specific folder (Shared or Personal)
+            if (process.env.GOOGLE_DRIVE_ROOT_FOLDER_ID) {
+                fileMetadata.parents = [process.env.GOOGLE_DRIVE_ROOT_FOLDER_ID];
+            }
 
             const media = {
                 mimeType,
@@ -50,16 +66,10 @@ export class GoogleDriveService {
                 throw new Error('Google Drive upload failed: No ID returned');
             }
 
-            // Ensure permissions allow anyone with link to view (optional, but robust for sharing)
-            await this.drive.permissions.create({
-                fileId,
-                requestBody: {
-                    role: 'reader',
-                    type: 'anyone',
-                },
-            });
+            // Optional: Ensure permissions (User OAuth usually implies owner, but we can make it public/shared if needed)
+            // For now, we rely on folder permissions.
 
-            logger.info('File uploaded to Google Drive', { fileName, fileId });
+            logger.info('File uploaded to Google Drive (OAuth)', { fileName, fileId });
             return { fileId, webViewLink };
 
         } catch (error) {

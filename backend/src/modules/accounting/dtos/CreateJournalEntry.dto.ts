@@ -26,6 +26,6 @@ export const CreateJournalEntrySchema = z.object({
     vatAmount: z.number().int().optional(),
     attachmentId: z.string().optional(),
     source: z.string(),
-    metadata: z.record(z.any()).optional(),
+    metadata: z.record(z.string(), z.any()).optional(),
     createdBy: z.string(),
 });

@@ -25,13 +25,7 @@ export const ocrUploadLimiter = rateLimit({
         message: 'Too many OCR requests. Please try again later.',
         retryAfter: '15 minutes'
     },
-    standardHeaders: true, // Return rate limit info in `RateLimit-*` headers
     legacyHeaders: false, // Disable `X-RateLimit-*` headers
-
-    // Custom key generator (by IP)
-    keyGenerator: (req) => {
-        return req.ip || req.socket.remoteAddress || 'unknown';
-    },
 
     // Log rate limit violations
     handler: (req, res) => {
@@ -44,7 +38,7 @@ export const ocrUploadLimiter = rateLimit({
         res.status(429).json({
             error: 'TOO_MANY_REQUESTS',
             message: 'Too many OCR requests from this IP. Please try again in 15 minutes.',
-            retryAfter: Math.ceil(req.rateLimit.resetTime - Date.now()) / 1000
+            retryAfter: Math.ceil((req.rateLimit?.resetTime ? new Date(req.rateLimit.resetTime).getTime() - Date.now() : 0) / 1000)
         });
     }
 });
@@ -101,7 +95,7 @@ export const ocrBatchLimiter = rateLimit({
         res.status(429).json({
             error: 'TOO_MANY_BATCH_REQUESTS',
             message: 'Batch upload limit exceeded (5 per hour). Please try again later.',
-            retryAfter: Math.ceil((req.rateLimit.resetTime - Date.now()) / 1000)
+            retryAfter: Math.ceil((req.rateLimit?.resetTime ? new Date(req.rateLimit.resetTime).getTime() - Date.now() : 0) / 1000)
         });
     }
 });

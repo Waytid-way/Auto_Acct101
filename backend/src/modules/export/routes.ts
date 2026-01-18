@@ -14,9 +14,7 @@ const exportService = new ExpressExportService();
  */
 const QueueRequestSchema = z.object({
     entryId: z.string().min(1, 'Entry ID is required'),
-    exportPath: z.enum(['manual', 'immediate', 'scheduled'], {
-        errorMap: () => ({ message: 'Export path must be manual, immediate, or scheduled' })
-    })
+    exportPath: z.enum(['manual', 'immediate', 'scheduled'])
 });
 
 /**
@@ -30,7 +28,7 @@ router.post('/queue', async (req: Request, res: Response) => {
         if (!validation.success) {
             return res.status(400).json({
                 error: 'Validation failed',
-                details: validation.error.errors
+                details: validation.error.issues
             });
         }
 

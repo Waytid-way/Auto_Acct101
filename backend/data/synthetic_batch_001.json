@@ -1,0 +1,492 @@
+[
+  {
+    "date": "2026-01-18",
+    "description": "Consulting Service for Client A - Strategic Planning",
+    "accountCode": "4001",
+    "accountName": "Service Revenue",
+    "amount": 15000.00,
+    "type": "credit",
+    "category": "REVENUE",
+    "referenceNo": "INV-001"
+  },
+  {
+    "date": "2026-01-18",
+    "description": "Software Development Services - Contract Work",
+    "accountCode": "4001",
+    "accountName": "Service Revenue",
+    "amount": 25000.00,
+    "type": "credit",
+    "category": "REVENUE",
+    "referenceNo": "INV-002"
+  },
+  {
+    "date": "2026-01-18",
+    "description": "Freelance Graphic Design Project",
+    "accountCode": "4002",
+    "accountName": "Design Revenue",
+    "amount": 8500.00,
+    "type": "credit",
+    "category": "REVENUE",
+    "referenceNo": "INV-003"
+  },
+  {
+    "date": "2026-01-18",
+    "description": "Training Workshop - IT Skills Development",
+    "accountCode": "4003",
+    "accountName": "Training Revenue",
+    "amount": 12000.00,
+    "type": "credit",
+    "category": "REVENUE",
+    "referenceNo": "INV-004"
+  },
+  {
+    "date": "2026-01-18",
+    "description": "API Integration Consulting",
+    "accountCode": "4001",
+    "accountName": "Service Revenue",
+    "amount": 18000.00,
+    "type": "credit",
+    "category": "REVENUE",
+    "referenceNo": "INV-005"
+  },
+  {
+    "date": "2026-01-18",
+    "description": "Support & Maintenance Services - Monthly Retainer",
+    "accountCode": "4004",
+    "accountName": "Maintenance Revenue",
+    "amount": 9500.00,
+    "type": "credit",
+    "category": "REVENUE",
+    "referenceNo": "INV-006"
+  },
+  {
+    "date": "2026-01-18",
+    "description": "Cloud Infrastructure Setup - AWS Consulting",
+    "accountCode": "4005",
+    "accountName": "Cloud Services Revenue",
+    "amount": 22000.00,
+    "type": "credit",
+    "category": "REVENUE",
+    "referenceNo": "INV-007"
+  },
+  {
+    "date": "2026-01-18",
+    "description": "Data Analysis & Reporting Project",
+    "accountCode": "4001",
+    "accountName": "Service Revenue",
+    "amount": 16500.00,
+    "type": "credit",
+    "category": "REVENUE",
+    "referenceNo": "INV-008"
+  },
+  {
+    "date": "2026-01-18",
+    "description": "UX/UI Design Consultation",
+    "accountCode": "4002",
+    "accountName": "Design Revenue",
+    "amount": 11000.00,
+    "type": "credit",
+    "category": "REVENUE",
+    "referenceNo": "INV-009"
+  },
+  {
+    "date": "2026-01-18",
+    "description": "Security Audit & Compliance Review",
+    "accountCode": "4006",
+    "accountName": "Security Consulting",
+    "amount": 19500.00,
+    "type": "credit",
+    "category": "REVENUE",
+    "referenceNo": "INV-010"
+  },
+  {
+    "date": "2026-01-18",
+    "description": "Mobile App Development - Phase 1",
+    "accountCode": "4001",
+    "accountName": "Service Revenue",
+    "amount": 35000.00,
+    "type": "credit",
+    "category": "REVENUE",
+    "referenceNo": "INV-011"
+  },
+  {
+    "date": "2026-01-18",
+    "description": "Database Optimization & Migration",
+    "accountCode": "4001",
+    "accountName": "Service Revenue",
+    "amount": 14000.00,
+    "type": "credit",
+    "category": "REVENUE",
+    "referenceNo": "INV-012"
+  },
+  {
+    "date": "2026-01-18",
+    "description": "Process Automation - RPA Implementation",
+    "accountCode": "4007",
+    "accountName": "Automation Services",
+    "amount": 28000.00,
+    "type": "credit",
+    "category": "REVENUE",
+    "referenceNo": "INV-013"
+  },
+  {
+    "date": "2026-01-18",
+    "description": "Machine Learning Model Development",
+    "accountCode": "4008",
+    "accountName": "AI Services Revenue",
+    "amount": 32000.00,
+    "type": "credit",
+    "category": "REVENUE",
+    "referenceNo": "INV-014"
+  },
+  {
+    "date": "2026-01-18",
+    "description": "Quality Assurance & Testing Services",
+    "accountCode": "4009",
+    "accountName": "QA Services",
+    "amount": 10500.00,
+    "type": "credit",
+    "category": "REVENUE",
+    "referenceNo": "INV-015"
+  },
+  {
+    "date": "2026-01-18",
+    "description": "Technical Documentation & Knowledge Transfer",
+    "accountCode": "4001",
+    "accountName": "Service Revenue",
+    "amount": 7500.00,
+    "type": "credit",
+    "category": "REVENUE",
+    "referenceNo": "INV-016"
+  },
+  {
+    "date": "2026-01-18",
+    "description": "DevOps Infrastructure Setup & Management",
+    "accountCode": "4010",
+    "accountName": "DevOps Services",
+    "amount": 20000.00,
+    "type": "credit",
+    "category": "REVENUE",
+    "referenceNo": "INV-017"
+  },
+  {
+    "date": "2026-01-18",
+    "description": "Business Process Consulting & Strategy",
+    "accountCode": "4001",
+    "accountName": "Service Revenue",
+    "amount": 26000.00,
+    "type": "credit",
+    "category": "REVENUE",
+    "referenceNo": "INV-018"
+  },
+  {
+    "date": "2026-01-18",
+    "description": "System Integration & API Development",
+    "accountCode": "4001",
+    "accountName": "Service Revenue",
+    "amount": 24000.00,
+    "type": "credit",
+    "category": "REVENUE",
+    "referenceNo": "INV-019"
+  },
+  {
+    "date": "2026-01-18",
+    "description": "Team Augmentation & Staff Training",
+    "accountCode": "4011",
+    "accountName": "Training & HR Services",
+    "amount": 13000.00,
+    "type": "credit",
+    "category": "REVENUE",
+    "referenceNo": "INV-020"
+  },
+  {
+    "date": "2026-01-18",
+    "description": "Grab Taxi to Client Meeting (Sukhumvit)",
+    "accountCode": "5003",
+    "accountName": "Travel Expense",
+    "amount": 250.00,
+    "type": "debit",
+    "category": "EXPENSE",
+    "referenceNo": "EXP-001"
+  },
+  {
+    "date": "2026-01-18",
+    "description": "Office Supplies - Stationery & Printing Paper",
+    "accountCode": "5004",
+    "accountName": "Office Supplies Expense",
+    "amount": 1250.00,
+    "type": "debit",
+    "category": "EXPENSE",
+    "referenceNo": "EXP-002"
+  },
+  {
+    "date": "2026-01-18",
+    "description": "AWS Cloud Services - Monthly Bill (January)",
+    "accountCode": "5005",
+    "accountName": "Cloud Computing Expense",
+    "amount": 4800.00,
+    "type": "debit",
+    "category": "EXPENSE",
+    "referenceNo": "EXP-003"
+  },
+  {
+    "date": "2026-01-18",
+    "description": "Internet & Broadband Service - Truemove H",
+    "accountCode": "5006",
+    "accountName": "Utilities Expense",
+    "amount": 1500.00,
+    "type": "debit",
+    "category": "EXPENSE",
+    "referenceNo": "EXP-004"
+  },
+  {
+    "date": "2026-01-18",
+    "description": "Office Rental - Bangkok Office Space (Ploenchit)",
+    "accountCode": "5001",
+    "accountName": "Rent Expense",
+    "amount": 35000.00,
+    "type": "debit",
+    "category": "EXPENSE",
+    "referenceNo": "EXP-005"
+  },
+  {
+    "date": "2026-01-18",
+    "description": "Software License - Microsoft Office 365 (5 seats)",
+    "accountCode": "5007",
+    "accountName": "Software & Licenses Expense",
+    "amount": 2500.00,
+    "type": "debit",
+    "category": "EXPENSE",
+    "referenceNo": "EXP-006"
+  },
+  {
+    "date": "2026-01-18",
+    "description": "Meal Expense - Client Meeting Lunch (Centrair)",
+    "accountCode": "5008",
+    "accountName": "Meals & Entertainment",
+    "amount": 1200.00,
+    "type": "debit",
+    "category": "EXPENSE",
+    "referenceNo": "EXP-007"
+  },
+  {
+    "date": "2026-01-18",
+    "description": "Professional Insurance - Public Liability & Professional Indemnity",
+    "accountCode": "5009",
+    "accountName": "Insurance Expense",
+    "amount": 3200.00,
+    "type": "debit",
+    "category": "EXPENSE",
+    "referenceNo": "EXP-008"
+  },
+  {
+    "date": "2026-01-18",
+    "description": "Employee Training Course - AWS Certification",
+    "accountCode": "5010",
+    "accountName": "Training & Development",
+    "amount": 1800.00,
+    "type": "debit",
+    "category": "EXPENSE",
+    "referenceNo": "EXP-009"
+  },
+  {
+    "date": "2026-01-18",
+    "description": "Conference Registration - Thailand Tech Summit 2026",
+    "accountCode": "5011",
+    "accountName": "Conference & Seminars",
+    "amount": 5000.00,
+    "type": "debit",
+    "category": "EXPENSE",
+    "referenceNo": "EXP-010"
+  },
+  {
+    "date": "2026-01-18",
+    "description": "Advertising & Marketing - Google Ads Campaign",
+    "accountCode": "5012",
+    "accountName": "Marketing Expense",
+    "amount": 2800.00,
+    "type": "debit",
+    "category": "EXPENSE",
+    "referenceNo": "EXP-011"
+  },
+  {
+    "date": "2026-01-18",
+    "description": "Bank Fees - Monthly Account Maintenance",
+    "accountCode": "5013",
+    "accountName": "Bank & Finance Charges",
+    "amount": 150.00,
+    "type": "debit",
+    "category": "EXPENSE",
+    "referenceNo": "EXP-012"
+  },
+  {
+    "date": "2026-01-18",
+    "description": "Equipment Maintenance - Printer Service & Cartridges",
+    "accountCode": "5014",
+    "accountName": "Equipment Maintenance",
+    "amount": 800.00,
+    "type": "debit",
+    "category": "EXPENSE",
+    "referenceNo": "EXP-013"
+  },
+  {
+    "date": "2026-01-18",
+    "description": "Courier Service - Document Delivery (EMS Parcel)",
+    "accountCode": "5015",
+    "accountName": "Postage & Shipping",
+    "amount": 350.00,
+    "type": "debit",
+    "category": "EXPENSE",
+    "referenceNo": "EXP-014"
+  },
+  {
+    "date": "2026-01-18",
+    "description": "Office Cleaning Service - Monthly Contract",
+    "accountCode": "5016",
+    "accountName": "Cleaning & Maintenance",
+    "amount": 1500.00,
+    "type": "debit",
+    "category": "EXPENSE",
+    "referenceNo": "EXP-015"
+  },
+  {
+    "date": "2026-01-18",
+    "description": "Purchase MacBook Pro M3 Max - 36GB RAM (Equipment)",
+    "accountCode": "1001",
+    "accountName": "Computer Equipment",
+    "amount": 89000.00,
+    "type": "debit",
+    "category": "ASSET",
+    "referenceNo": "AST-001"
+  },
+  {
+    "date": "2026-01-18",
+    "description": "Purchase Office Furniture - Standing Desk & Ergonomic Chair",
+    "accountCode": "1002",
+    "accountName": "Office Furniture",
+    "amount": 22000.00,
+    "type": "debit",
+    "category": "ASSET",
+    "referenceNo": "AST-002"
+  },
+  {
+    "date": "2026-01-18",
+    "description": "Purchase Networking Equipment - Cisco Switch & Router",
+    "accountCode": "1003",
+    "accountName": "Network Equipment",
+    "amount": 15000.00,
+    "type": "debit",
+    "category": "ASSET",
+    "referenceNo": "AST-003"
+  },
+  {
+    "date": "2026-01-18",
+    "description": "Purchase Backup & Storage System - Synology NAS 8-Bay",
+    "accountCode": "1004",
+    "accountName": "Storage Equipment",
+    "amount": 28000.00,
+    "type": "debit",
+    "category": "ASSET",
+    "referenceNo": "AST-004"
+  },
+  {
+    "date": "2026-01-18",
+    "description": "Purchase Security System - CCTV & Access Control",
+    "accountCode": "1005",
+    "accountName": "Security Equipment",
+    "amount": 35000.00,
+    "type": "debit",
+    "category": "ASSET",
+    "referenceNo": "AST-005"
+  },
+  {
+    "date": "2026-01-18",
+    "description": "Description with special char: \"quoted text\" and commas, inside string",
+    "accountCode": "5017",
+    "accountName": "Test Edge Case 1",
+    "amount": 500.00,
+    "type": "debit",
+    "category": "EXPENSE",
+    "referenceNo": "EDGE-001"
+  },
+  {
+    "date": "2026-01-18",
+    "description": "Thai Text Test: ค่าใช้จ่ายการประชุมสัมมนาการฝึกอบรมสำหรับการพัฒนาทักษะในการทำงาน",
+    "accountCode": "5018",
+    "accountName": "Thai Training Expense",
+    "amount": 2000.00,
+    "type": "debit",
+    "category": "EXPENSE",
+    "referenceNo": "THAI-001"
+  },
+  {
+    "date": "2026-01-18",
+    "description": "Mixed Thai-English: Purchase อุปกรณ์คอมพิวเตอร์ฮาร์ดแวร์ High-Performance GPU Card",
+    "accountCode": "1006",
+    "accountName": "Hardware",
+    "amount": 12000.00,
+    "type": "debit",
+    "category": "ASSET",
+    "referenceNo": "MIXED-001"
+  },
+  {
+    "date": "2026-01-18",
+    "description": "Very long description text that tests CSV formatting with many words to ensure proper line wrapping and field escaping in the export process without causing formatting issues or breaking the CSV structure integrity",
+    "accountCode": "5019",
+    "accountName": "Long Description Test",
+    "amount": 750.00,
+    "type": "debit",
+    "category": "EXPENSE",
+    "referenceNo": "LONG-001"
+  },
+  {
+    "date": "2026-01-18",
+    "description": "Interest Income - Bank Account Interest (Quarterly)",
+    "accountCode": "4012",
+    "accountName": "Interest Revenue",
+    "amount": 0.01,
+    "type": "credit",
+    "category": "REVENUE",
+    "referenceNo": "MICRO-001"
+  },
+  {
+    "date": "2026-01-18",
+    "description": "Rounding Adjustment - Prior Period Correction",
+    "accountCode": "5020",
+    "accountName": "Adjustment Expense",
+    "amount": 0.50,
+    "type": "debit",
+    "category": "EXPENSE",
+    "referenceNo": "MICRO-002"
+  },
+  {
+    "date": "2026-01-18",
+    "description": "Micro Transaction - Refund (Customer Return)",
+    "accountCode": "4001",
+    "accountName": "Service Revenue",
+    "amount": 0.25,
+    "type": "debit",
+    "category": "EXPENSE",
+    "referenceNo": "MICRO-003"
+  },
+  {
+    "date": "2026-01-18",
+    "description": "Cent Adjustment - Payment Reconciliation",
+    "accountCode": "5021",
+    "accountName": "Currency Adjustment",
+    "amount": 0.75,
+    "type": "credit",
+    "category": "EXPENSE",
+    "referenceNo": "MICRO-004"
+  },
+  {
+    "date": "2026-01-18",
+    "description": "Penny Transaction - Misc. Fee",
+    "accountCode": "5022",
+    "accountName": "Miscellaneous Fees",
+    "amount": 0.10,
+    "type": "debit",
+    "category": "EXPENSE",
+    "referenceNo": "MICRO-005"
+  }
+]

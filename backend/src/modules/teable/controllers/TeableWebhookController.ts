@@ -53,6 +53,7 @@ export class TeableWebhookController {
             // 4. IDEMPOTENCY CHECK: Prevent duplicate webhooks
             const existing = await ExportQueueModel.findOne({ entryId });
             if (existing) {
+                // ... (existing logic)
                 await sendInfoLog(`Webhook duplicate: Entry ${entryId} already queued`);
                 const duration = Date.now() - startTime;
                 logger.info('[Webhook] Duplicate (idempotent)', {
@@ -68,6 +69,18 @@ export class TeableWebhookController {
                     status: existing.status,
                 });
             }
+
+            // [NEW] SYNC STATUS: Update Mongo to 'approved' before exporting
+            // Teable is the Source of Truth for Approval.
+            const { JournalEntryModel } = await import('../../accounting/models/JournalEntry.model');
+            await JournalEntryModel.updateOne(
+                { _id: entryId },
+                {
+                    status: 'approved',
+                    approvedBy: 'teable_system',
+                    updatedAt: new Date()
+                }
+            );
 
             // 5. Queue export with TIMEOUT (3 seconds)
             const queue = await Promise.race([

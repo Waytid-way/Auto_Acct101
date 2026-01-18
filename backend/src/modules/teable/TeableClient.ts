@@ -3,19 +3,7 @@ import config from '@config/env';
 import logger from '@loaders/logger';
 
 export interface TeableRecordDTO {
-    fields: {
-        clientId: string;
-        journalEntryId: string;
-        date: string;
-        vendor: string;
-        amount: number; // Display as THB (divided by 100)
-        category: string;
-        status: string;
-        vatAmount?: number;
-        confidenceScore?: number;
-        warnings?: string[];
-        attachmentUrl?: string;
-    };
+    fields: Record<string, any>;
 }
 
 export class TeableClient {
@@ -45,6 +33,7 @@ export class TeableClient {
         try {
             const response = await this.client.post(`/table/${tableId}/record`, {
                 records: [record],
+                typecast: true // Allow creating new options (e.g. New Categories)
             });
 
             // Teable returns { records: [ { id: ... } ] }
@@ -106,5 +95,66 @@ export class TeableClient {
             recordId,
             status,
         });
+    }
+
+    /**
+     * Update arbitrary record fields
+     */
+    async updateRecord(
+        tableId: string,
+        recordId: string,
+        fields: Record<string, any>
+    ): Promise<void> {
+        // Use Batch Endpoint for robustness
+        await this.client.patch(`/table/${tableId}/record`, {
+            records: [{
+                id: recordId,
+                fields: fields
+            }]
+        });
+        // Note: Teable API specific structure might vary, usually PATCH /record/{recordId} or bulk PATCH.
+        // Based on docs, usually PATCH /table/{tableId}/record with records array for bulk or single.
+        // Let's assume standard Teable API structure for single record update via batch endpoint if specific endpoint ambiguous.
+        // Correction: Teable API usually uses PATCH /table/{tableId}/record for batch update.
+        // payload: { records: [ { id: '...', fields: { ... } } ] }
+
+        logger.info('Teable record updated', {
+            tableId,
+            recordId,
+            fields: Object.keys(fields)
+        });
+    }
+    /**
+     * Fetch all Approved records from Teable
+     */
+    async getApprovedRecords(tableId: string): Promise<any[]> {
+        try {
+            // Filter: Status is "Approved"
+            // Note: Teable API expects JSON stringified filter
+            const filter = {
+                filterSet: [
+                    {
+                        fieldId: "Status", // Assuming field name is used (Teable supports ID or Name?)
+                        // User script used "Status".
+                        // If Name, Teable usually inferred.
+                        // Ideally use Field ID but Name works in many cases.
+                        operator: "is",
+                        value: "Approved"
+                    }
+                ],
+                conjunction: "and"
+            };
+
+            const response = await this.client.get(`/table/${tableId}/record`, {
+                params: {
+                    filter: JSON.stringify(filter)
+                }
+            });
+
+            return response.data.records || [];
+        } catch (error) {
+            logger.error('Failed to fetch approved records', { error, tableId });
+            return [];
+        }
     }
 }

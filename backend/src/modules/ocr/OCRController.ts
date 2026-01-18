@@ -44,7 +44,7 @@ export async function processReceipt(
         if (!validation.success) {
             res.status(400).json({
                 error: 'INVALID_FILE',
-                message: validation.error.errors.map(e => e.message).join(', '),
+                message: validation.error.issues.map(e => e.message).join(', '),
                 requestId
             });
             return;
@@ -228,7 +228,7 @@ export async function processBatch(
 
         // Process files with concurrency limit
         const CONCURRENCY_LIMIT = 5;
-        const results = [];
+        const results: any[] = [];
 
         for (let i = 0; i < files.length; i += CONCURRENCY_LIMIT) {
             const batch = files.slice(i, i + CONCURRENCY_LIMIT);

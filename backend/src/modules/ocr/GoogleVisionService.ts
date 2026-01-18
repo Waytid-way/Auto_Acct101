@@ -9,7 +9,7 @@
  * - Production-ready authentication
  */
 
-import vision from '@google-cloud/vision';
+import * as vision from '@google-cloud/vision';
 import logger from '@loaders/logger';
 import { QuotaModel } from '@models/Quota';
 import config from '@config/env';

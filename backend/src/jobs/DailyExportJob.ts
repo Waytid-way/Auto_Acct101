@@ -1,14 +1,16 @@
 import cron from 'node-cron';
+import type { ScheduledTask } from 'node-cron';
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
 import { startSession } from 'mongoose';
-import { ExpressExportService } from '../modules/export/ExpressExportService';
 import { GoogleDriveService } from '../modules/files/GoogleDriveService';
 import { ExportQueueModel } from '../modules/export/models/ExportQueue';
 import { ExportLogModel } from '../modules/export/models/ExportLog';
 import { sendInfoLog, sendCriticalAlert } from '../loaders/logger';
 import logger from '../loaders/logger';
+import { configService } from '../modules/config/services/ConfigService';
+import iconv from 'iconv-lite';
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
@@ -22,40 +24,68 @@ dayjs.extend(timezone);
  * 2. Atomic idempotency with MongoDB unique _id (race-safe)
  * 3. Retry limit with exponential backoff (max 3 attempts)
  * 4. MongoDB transactions for ACID guarantees
+ * 5. Dynamic Scheduling via ConfigService
  */
 export class DailyExportJob {
-    private job: cron.ScheduledTask | null = null;
+    private job: ScheduledTask | null = null;
     private retryCount = 0;
     private readonly MAX_RETRIES = 3;
+    // [NEW] Track running state
+    private isRunning = false;
 
     constructor(
-        private exportService: ExpressExportService,
         private googleDrive: GoogleDriveService
-    ) { }
+    ) {
+        // [NEW] Listen for config changes (Hot-Reload)
+        configService.on('config:changed', async (event) => {
+            if (event.key === 'DAILY_EXPORT_TIME') {
+                logger.info(`🔄 Daily Export Schedule updating to ${event.newValue}...`);
+                await this.stop();
+                await this.start();
+            }
+        });
+    }
 
     /**
      * Start the daily export job
-     * Schedule: 18:00 Bangkok time (UTC+7) daily
+     * Schedule: Dynamic based on ConfigService (default 18:00)
      */
-    start(): void {
-        // Cron expression: "0 18 * * *" means 18:00 every day
+    async start(): Promise<void> {
+        // [NEW] Get dynamic time from ConfigService
+        let scheduleTime = '18:00';
+        try {
+            scheduleTime = await configService.get('DAILY_EXPORT_TIME');
+        } catch (e) {
+            logger.warn('Failed to get export time from config, using default 18:00');
+        }
+
+        const [hour, minute] = scheduleTime.split(':');
+
+        // Cron format: "minute hour * * *"
         // Timezone-aware scheduling
-        this.job = cron.schedule('0 18 * * *', () => {
-            this.executeDaily().catch(err => {
+        // Note: node-cron uses "minute hour day month day-of-week"
+        const cronExpression = `${minute} ${hour} * * *`;
+
+        this.job = cron.schedule(cronExpression, () => {
+            this.executeDaily().catch(async err => {
                 logger.error('[Cron] Daily export failed:', err);
-                sendCriticalAlert(`Daily batch failed: ${err.message}`);
+                // Fix: Pass error as metadata to avoid Discord Title limit (256 chars)
+                await sendCriticalAlert('Daily Export Failed', {
+                    error: err instanceof Error ? err.message : 'Unknown error',
+                    details: err.response?.data || 'No details'
+                });
             });
         }, {
             timezone: 'Asia/Bangkok'
         });
 
-        logger.info('[Cron] Daily export job scheduled for 18:00 Bangkok time');
+        logger.info(`[Cron] Daily export job scheduled for ${scheduleTime} Bangkok time`);
     }
 
     /**
      * Stop the cron job (for graceful shutdown)
      */
-    stop(): void {
+    async stop(): Promise<void> {
         if (this.job) {
             this.job.stop();
             this.job = null;
@@ -65,33 +95,52 @@ export class DailyExportJob {
 
     /**
      * Main execution logic
-     * CRITICAL FIX #2: Atomic idempotency with unique _id
-     * CRITICAL FIX #3: Retry limit with exponential backoff
-     * CRITICAL FIX #4: MongoDB transactions
+     * Execute the daily export process
+     * 1. Check for scheduled entries
+     * 2. Generate detailed CSV
+     * 3. Upload to Google Drive
+     * 4. Log to database and Discord
      */
-    private async executeDaily(): Promise<void> {
+    /**
+     * Main execution logic
+     * Execute the daily export process
+     * @param forceIfScheduled - If true, export all queued scheduled items regardless of time
+     */
+    public async executeDaily(forceIfScheduled: boolean = false): Promise<{ processed: number; fileId?: string }> {
+        if (this.isRunning) {
+            logger.warn('[Cron] Job already running, skipping overlapping execution.');
+            return { processed: 0 };
+        }
+
+        this.isRunning = true;
         const startTime = Date.now();
-        const today = dayjs().tz('Asia/Bangkok').format('YYYY-MM-DD');
         const session = await startSession();
+        session.startTransaction();
 
         try {
-            session.startTransaction();
+            const today = dayjs().format('YYYY-MM-DD');
+            logger.info(`[Cron] Daily export started at ${new Date().toISOString()} (Force: ${forceIfScheduled})`);
 
-            logger.info(`[Cron] Daily export started at ${new Date().toISOString()}`);
+            // Query condition
+            const query: any = {
+                exportPath: 'scheduled',
+                status: 'queued'
+            };
+
+            // Only check time if NOT forcing
+            if (!forceIfScheduled) {
+                query.scheduledFor = { $lte: new Date() };
+            }
 
             // Fetch queued entries (consistent read within transaction)
-            const queuedEntries = await ExportQueueModel.find({
-                exportPath: 'scheduled',
-                status: 'queued',
-                scheduledFor: { $lte: new Date() }
-            })
+            const queuedEntries = await ExportQueueModel.find(query)
                 .populate('entryId')
                 .session(session);
 
             if (queuedEntries.length === 0) {
                 logger.info('[Cron] No scheduled entries to export');
                 await session.commitTransaction();
-                return;
+                return { processed: 0 };
             }
 
             logger.info(`[Cron] Found ${queuedEntries.length} entries to batch`);
@@ -142,7 +191,7 @@ export class DailyExportJob {
                     // Duplicate key error - batch already generated today
                     logger.info('[Cron] Batch already generated today (race condition prevented by unique index)');
                     await session.abortTransaction();
-                    return;
+                    return { processed: 0 };
                 }
                 throw error;
             }
@@ -169,26 +218,27 @@ export class DailyExportJob {
             // Reset retry count on success
             this.retryCount = 0;
 
-            // Discord notification
-            await sendInfoLog({
-                title: '✅ Daily Batch Export Ready',
-                description: `${queuedEntries.length} entries exported to CSV`,
+            // Send Discord notification
+            const totalDuration = Date.now() - startTime;
+            await sendInfoLog('Daily Export Complete', {
+                title: 'Daily Batch Export Success',
                 fields: [
-                    { name: 'Date', value: today },
-                    { name: 'Entries', value: `${queuedEntries.length}` },
-                    { name: 'File Size', value: `${(csvBuffer.length / 1024).toFixed(2)} KB` },
-                    { name: 'Download Link', value: uploadResult.webViewLink || 'N/A' }
+                    { name: 'Batch Date', value: today },
+                    { name: 'Entries', value: queuedEntries.length.toString() },
+                    { name: 'File ID', value: uploadResult.fileId },
+                    { name: 'Size', value: `${(csvBuffer.length / 1024).toFixed(2)} KB` },
+                    { name: 'Duration', value: `${totalDuration}ms` }
                 ]
             });
 
-            // Metrics
-            const totalDuration = Date.now() - startTime;
             logger.info('[Cron] Daily export completed', {
                 entriesCount: queuedEntries.length,
                 csvSize: `${(csvBuffer.length / 1024).toFixed(2)} KB`,
                 uploadDuration,
                 totalDuration
             });
+
+            return { processed: queuedEntries.length, fileId: uploadResult.fileId };
 
         } catch (error: any) {
             // Rollback transaction on any failure
@@ -202,11 +252,10 @@ export class DailyExportJob {
 
             // CRITICAL FIX #3: Retry limit with exponential backoff
             if (this.retryCount >= this.MAX_RETRIES) {
-                await sendCriticalAlert(
-                    `🚨 Daily batch export FAILED after ${this.MAX_RETRIES} attempts\n` +
-                    `Error: ${error.message}\n` +
-                    `Manual intervention required!`
-                );
+                await sendCriticalAlert('Daily Batch Export Failed (Max Retries)', {
+                    error: error.message,
+                    status: 'Manual intervention required'
+                });
                 this.retryCount = 0; // Reset for next day
                 throw error;
             }
@@ -217,92 +266,108 @@ export class DailyExportJob {
                 const delayMs = Math.pow(3, this.retryCount) * 5 * 60 * 1000;
                 this.retryCount++;
 
-                await sendCriticalAlert(
-                    `⏱️ Batch CSV generation timeout (>30s)\n` +
-                    `Retry attempt ${this.retryCount}/${this.MAX_RETRIES}\n` +
-                    `Retrying in ${delayMs / 60000} minutes`
-                );
+                await sendCriticalAlert('Batch CSV Generation Timeout', {
+                    attempt: `${this.retryCount}/${this.MAX_RETRIES}`,
+                    nextRetry: `${delayMs / 60000} minutes`
+                });
 
                 setTimeout(() => this.executeDaily(), delayMs);
             } else if (error.message.includes('Google Drive')) {
                 const delayMs = Math.pow(3, this.retryCount) * 5 * 60 * 1000;
                 this.retryCount++;
 
-                await sendCriticalAlert(
-                    `📁 Google Drive error: ${error.message}\n` +
-                    `Retry attempt ${this.retryCount}/${this.MAX_RETRIES}\n` +
-                    `Please check credentials\n` +
-                    `Retrying in ${delayMs / 60000} minutes`
-                );
+                await sendCriticalAlert('Google Drive Error', {
+                    error: error.message,
+                    attempt: `${this.retryCount}/${this.MAX_RETRIES}`,
+                    nextRetry: `${delayMs / 60000} minutes`,
+                    action: 'Check credentials'
+                });
 
                 setTimeout(() => this.executeDaily(), delayMs);
             } else {
                 const delayMs = Math.pow(3, this.retryCount) * 5 * 60 * 1000;
                 this.retryCount++;
 
-                await sendCriticalAlert(
-                    `❌ Daily batch export failed: ${error.message}\n` +
-                    `Retry attempt ${this.retryCount}/${this.MAX_RETRIES}\n` +
-                    `Retrying in ${delayMs / 60000} minutes`
-                );
+                await sendCriticalAlert('Daily Batch Export Failed (Retry)', {
+                    error: error.message,
+                    attempt: `${this.retryCount}/${this.MAX_RETRIES}`,
+                    nextRetry: `${delayMs / 60000} minutes`
+                });
 
                 setTimeout(() => this.executeDaily(), delayMs);
             }
 
             throw error;
         } finally {
+            this.isRunning = false;
             session.endSession();
         }
     }
 
     /**
-     * Generate CSV from queued entries
-     * CRITICAL FIX #1: Memory-safe CSV generation using Array.join()
-     * Prevents O(n²) memory allocation from string concatenation
+     * Generate CSV from queued entries (Express Compatible)
+     * Format: ~VOUCHER, ~ACCVOU logic for import
+     * Encoding: TIS-620 (Windows-874) for Thai support
      */
     private async generateBatchCSV(queuedEntries: Array<{ entryId: any }>): Promise<Buffer> {
-        // Use array instead of string concatenation (prevents memory leak)
-        const rows: string[] = ['Entry ID,Date,Account,Debit,Credit,Description'];
+        // Express Auto Import Format usually mimics the text file import structure
+        // Simple Comma Delimited for Express (Double Entry)
+        // Header: Date,Voucher No,Account,Debit,Credit,Description
+        const rows: string[] = ['Date,Voucher No,Account,Debit,Credit,Description'];
 
         let totalDebit = 0;
         let totalCredit = 0;
 
-        // Generate CSV rows
         for (const queue of queuedEntries) {
             const entry = queue.entryId;
             if (!entry) continue;
 
-            const debit = entry.amounts?.debit || 0;
-            const credit = entry.amounts?.credit || 0;
+            // Generate Voucher No (e.g., JV-YYMM- running)
+            // Use clientId if available, or simulate one
+            const voucherNo = entry.clientId || `JV-${dayjs(entry.date).format('YYMM')}-${entry._id.toString().substring(18)}`;
+            const dateStr = dayjs(entry.date).format('DD/MM/YYYY');
 
-            totalDebit += debit;
-            totalCredit += credit;
-
-            // Sanitize values to prevent CSV injection
+            // Safe Strings used in helper
             const sanitize = (val: any): string => {
                 const str = String(val || '');
-                // Escape dangerous characters that could be interpreted as formulas
-                if (str.startsWith('=') || str.startsWith('+') || str.startsWith('-') || str.startsWith('@')) {
-                    return `'${str}`;
-                }
-                // Escape quotes
-                return str.replace(/"/g, '""');
+                return str.replace(/"/g, '""').replace(/,/g, ' '); // Remove commas to prevent col shift
             };
 
-            rows.push(
-                `${sanitize(entry._id)},` +
-                `${sanitize(entry.date)},` +
-                `${sanitize(entry.account)},` +
-                `${sanitize(debit)},` +
-                `${sanitize(credit)},` +
-                `${sanitize(entry.description)}`
-            );
+            const desc = sanitize(entry.description);
+            const amount = (entry.amount / 100).toFixed(2); // Convert Satang to Baht
+
+            // Line 1: Debit Row
+            const drRow = [
+                dateStr,
+                voucherNo,
+                sanitize(entry.accountCode),   // Account
+                amount,                        // Debit
+                '0.00',                        // Credit
+                desc                           // Description
+            ].join(',');
+
+            rows.push(drRow);
+            totalDebit += entry.amount;
+
+            // Line 2: Credit Row
+            // Use metadata.crAccount if available, else fallback
+            const crAccount = entry.metadata?.crAccount || '2001-01';
+
+            const crRow = [
+                dateStr,
+                voucherNo,
+                sanitize(crAccount),           // Account
+                '0.00',                        // Debit
+                amount,                        // Credit
+                desc                           // Description
+            ].join(',');
+
+            rows.push(crRow);
+            totalCredit += entry.amount;
         }
 
-        // CSV Footer (totals)
-        rows.push(`\nTOTALS,,,${totalDebit},${totalCredit}`);
-
-        // CRITICAL: Single join operation at the end (memory-efficient)
-        return Buffer.from(rows.join('\n'), 'utf-8');
+        // Encode to TIS-620 for Thai Language Support in Express
+        const csvContent = rows.join('\r\n'); // Windows EOL
+        return iconv.encode(csvContent, 'win874'); // win874 is superset of TIS-620
     }
 }

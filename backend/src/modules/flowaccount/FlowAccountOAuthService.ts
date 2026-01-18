@@ -15,10 +15,10 @@ export class FlowAccountOAuthService {
      */
     getAuthorizationURL(state: string): string {
         const params = new URLSearchParams({
-            client_id: config.FLOWACCOUNT_CLIENT_ID,
-            redirect_uri: config.FLOWACCOUNT_REDIRECT_URI,
+            client_id: config.FLOWACCOUNT_CLIENT_ID || '',
+            redirect_uri: config.FLOWACCOUNT_REDIRECT_URI || '',
             response_type: 'code',
-            scope: 'openid profile email document.read document.write',
+            scope: 'flowaccount-api',
             state, // CSRF protection
         });
 

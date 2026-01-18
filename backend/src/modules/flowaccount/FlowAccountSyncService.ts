@@ -4,7 +4,7 @@ import { FlowAccountToken } from './models/FlowAccountToken.model';
 import { AccountingService } from '@modules/accounting/AccountingService';
 import { AccountingRepository } from '@modules/accounting/AccountingRepository';
 import { CreateJournalEntryDTO } from '@modules/accounting/dtos/CreateJournalEntry.dto';
-import { parseMoneyFromString, MoneyInt } from '@types/money';
+import { parseMoneyFromString, MoneyInt } from '../../types/money';
 import logger from '@loaders/logger';
 import { sendDiscordAlert } from '@loaders/logger';
 import { TeableClient } from '@modules/teable/TeableClient';
@@ -276,8 +276,6 @@ export class FlowAccountSyncService {
                     amount: amount / 100, // Convert satang to THB for display
                     category: category.name,
                     status: 'pending_review', // Default status
-                    vatAmount: vatAmount / 100,
-                    vatAmount: vatAmount / 100,
                     confidenceScore,
                     warnings: warnings.length > 0 ? warnings : undefined,
                     attachmentUrl: entryDTO.attachmentId,

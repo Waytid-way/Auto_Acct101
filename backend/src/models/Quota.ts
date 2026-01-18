@@ -63,7 +63,7 @@ QuotaSchema.index({ service: 1, date: 1 }, { unique: true });
 /**
  * Static methods
  */
-QuotaSchema.statics.getOrCreateToday = async function (service: 'google_vision') {
+QuotaSchema.statics.getOrCreateToday = async function (this: any, service: 'google_vision') {
     const today = new Date().toISOString().split('T')[0];
 
     let quota = await this.findOne({ service, date: today });
@@ -81,7 +81,7 @@ QuotaSchema.statics.getOrCreateToday = async function (service: 'google_vision')
     return quota;
 };
 
-QuotaSchema.statics.incrementUsage = async function (service: 'google_vision') {
+QuotaSchema.statics.incrementUsage = async function (this: any, service: 'google_vision') {
     const today = new Date().toISOString().split('T')[0];
 
     const result = await this.findOneAndUpdate(
@@ -100,12 +100,12 @@ QuotaSchema.statics.incrementUsage = async function (service: 'google_vision') {
     return result;
 };
 
-QuotaSchema.statics.checkAvailability = async function (service: 'google_vision'): Promise<boolean> {
+QuotaSchema.statics.checkAvailability = async function (this: any, service: 'google_vision'): Promise<boolean> {
     const quota = await this.getOrCreateToday(service);
     return quota.count < quota.limit;
 };
 
-QuotaSchema.statics.getRemainingQuota = async function (service: 'google_vision'): Promise<number> {
+QuotaSchema.statics.getRemainingQuota = async function (this: any, service: 'google_vision'): Promise<number> {
     const quota = await this.getOrCreateToday(service);
     return Math.max(0, quota.limit - quota.count);
 };
@@ -121,4 +121,4 @@ interface QuotaModel extends mongoose.Model<IQuota> {
 /**
  * Export Quota model
  */
-export const QuotaModel = mongoose.model<IQuota, QuotaModel>('Quota', QuotaSchema);
+export const QuotaModel = mongoose.model('Quota', QuotaSchema) as QuotaModel;

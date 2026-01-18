@@ -201,12 +201,15 @@ export class ExpressExportService {
                 return '';
             }
 
-            // Generate CSV
-            const csvLines = ['Date,Vendor,Amount,Category,DebitAccount,CreditAccount']; // Header
+            // Generate CSV (Double Entry Format)
+            // Standard columns: Date, VoucherNo, Description, AccountCode, Debit, Credit
+            const csvLines = ['Date,VoucherNo,Description,AccountCode,Debit,Credit'];
+
             for (const queue of queues) {
                 const entry = await JournalEntryModel.findById(queue.entryId);
                 if (entry) {
-                    csvLines.push(this.generateCSVLine(entry));
+                    const rows = this.generateDoubleEntryRows(entry);
+                    csvLines.push(...rows);
                 }
             }
 
@@ -214,11 +217,12 @@ export class ExpressExportService {
             const buffer = Buffer.from(csvContent, 'utf-8');
 
             // Upload to Google Drive
-            const fileName = `batch_${date.toISOString().split('T')[0]}.csv`;
+            const fileName = `batch_${date.toISOString().split('T')[0]}_double_entry.csv`;
             const fileUrl = await this.googleDriveService.uploadFile(fileName, buffer);
 
-            // Log batch generation (use first queue ID as reference)
+            // Log batch generation
             if (queues.length > 0) {
+                // ... (logging logic same as before)
                 await ExportLogModel.log(
                     queues[0]._id.toString(),
                     ExportAction.CSV_GENERATED,
@@ -233,12 +237,45 @@ export class ExpressExportService {
             }
 
             logger.info('Daily batch generated', { fileUrl, count: queues.length });
+            return fileUrl.webViewLink;
 
-            return fileUrl;
         } catch (error: any) {
             logger.error('Failed to generate daily batch', { error, date });
             throw error;
         }
+    }
+
+    /**
+     * Helper: Generate Double Entry CSV rows (DR and CR)
+     */
+    private generateDoubleEntryRows(entry: any): string[] {
+        const dateStr = entry.date.toISOString().split('T')[0];
+        const voucherNo = entry.clientId || `JV-${entry._id.toString().substr(-6)}`;
+        const desc = (entry.description || entry.vendor || 'N/A').replace(/,/g, ' '); // Escape commas
+        const amount = (entry.amount / 100).toFixed(2); // Baht
+
+        // DR Row (Expense)
+        const drRow = [
+            dateStr,
+            voucherNo,
+            desc,
+            entry.accountCode, // DR Account
+            amount,
+            '0.00'
+        ].join(',');
+
+        // CR Row (Payment/AP)
+        const crAccount = entry.metadata?.crAccount || '2001-01'; // Fallback to AP
+        const crRow = [
+            dateStr,
+            voucherNo,
+            desc,
+            crAccount,
+            '0.00',
+            amount
+        ].join(',');
+
+        return [drRow, crRow];
     }
 
     /**
